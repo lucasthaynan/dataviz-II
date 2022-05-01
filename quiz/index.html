@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./main.js" defer></script>    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Quiz | O que mais foi buscado no Google neste ano?</title>
+</head>
+<body>
+    <main>
+        <section class="intro">
+
+        </section>
+
+        <section class="questao">            
+            <div id="q1" class="questao1">
+                <div class="container">
+                    <div class="progresso">
+                        <div class="barra">
+                            <div class="barra-preenchida"></div>
+                            <div class="barra-cinza"></div>
+                        </div>
+                        <p>Questão 1/5</p>               
+                    </div>
+                </div>    
+                <h1 class="pergunta">Entre estas redes sociais, qual foi a mais buscada no Google em 2021?</h1>
+                <div class="alternativas">
+                    <ul>
+                        <button>Twitter</button>
+                        <button class="certa">Facebook</button>
+                        <button>Instagram</button>
+                        <button>Tik Tok</button>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="q2" class="desativada">
+                <div class="container">
+                    <div class="progresso">
+                        <div class="barra">
+                            <div class="barra-preenchida"></div>
+                            <div class="barra-cinza"></div>
+                        </div>
+                        <p>Questão 2/5</p>               
+                    </div>
+                </div>
+                <h1 class="pergunta">Entre estes pré-candidatos à Presidência, qual foi o mais buscado no Google em 2021?</h1>
+                <div class="alternativas">
+                    <ul>
+                        <button class="certa">Jair Bolsonaro</button>
+                        <button>Sérgio Moro</button>
+                        <button>Lula</button>
+                        <button>Ciro Gomes</button>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="q3" class="desativada">
+                <div class="container">
+                    <div class="progresso">
+                        <div class="barra">
+                            <div class="barra-preenchida"></div>
+                            <div class="barra-cinza"></div>
+                        </div>
+                        <p>Questão 3/5</p>               
+                    </div>
+                </div>
+                <h1 class="pergunta">Entre estes times, qual foi o mais buscada no Google em 2021?</h1>
+                <div class="alternativas">
+                    <ul>
+                        <button>Palmeiras</button>
+                        <button>Corinthians</button>
+                        <button>São Paulo</button>
+                        <button class="certa">Flamengo</button>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="q4" class="desativada">
+                <div class="container">
+                    <div class="progresso">
+                        <div class="barra">
+                            <div class="barra-preenchida"></div>
+                            <div class="barra-cinza"></div>
+                        </div>
+                        <p>Questão 4/5</p>               
+                    </div>
+                </div>
+                <h1 class="pergunta">Entre estas personalidades, qual foi a mais buscada no Google em 2021?</h1>
+                <div class="alternativas">
+                    <ul>
+                        <button>Karol Conká</button>
+                        <button>Silvio Santos</button>
+                        <button class="certa">Paulo Gustavo</button>
+                        <button>Juliette</button>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="q5" class="desativada">
+                <div class="container">
+                    <div class="progresso">
+                        <div class="barra">
+                            <div class="barra-preenchida"></div>
+                            <div class="barra-cinza"></div>
+                        </div>
+                        <p>Questão 5/5</p>               
+                    </div>
+                </div>
+                <h1 class="pergunta">Entre estes atletas, qual foi o mais buscado no Google em 2021?</h1>
+                <div class="alternativas">
+                    <ul>
+                        <button class="certa">Rebeca Andrade</button>
+                        <button>Isaquias Queiroz</button>
+                        <button>Simone Biles</button>
+                        <button>Ítalo Ferreira</button>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="confirmar">Confirmar</button>
+            
+        </section>
+
+        <section class="popup open">
+            <div id="p1">
+                <div class="resultado">
+                    <h2>Você acertou!</h2>
+                    <img src="" alt="">
+                </div>
+                <p>Entre as opções, o Facebook foi a rede social mais buscada no Google em 2021.</p>
+                <div class="grafico">
+                    <canvas id="chart1" width="200" height="120"></canvas>
+                </div>
+            </div>
+
+            <div id="p2">
+                <div class="resultado">
+                    <h2>Você acertou!</h2>
+                    <img src="" alt="">
+                </div>
+                <p>Entre as opções, o presidente Jair Bolsonaro foi o pré-candidato mais buscado no Google em 2021. </p>
+                <div class="grafico">
+                    <canvas id="chart2" width="200" height="120"></canvas>
+                </div>
+            
+            </div>
+
+            <div id="p3">
+                <div class="resultado">
+                    <h2>Você acertou!</h2>
+                    <img src="" alt="">
+                </div>
+                <p>Entre as opções, o Flamengo foi o time mais buscado no Google em 2021. </p>
+                <div class="grafico">
+                    <canvas id="chart3" width="200" height="120"></canvas>
+                </div>
+            
+            </div>
+
+            <div id="p4">
+                <div class="resultado">
+                    <h2>Você acertou!</h2>
+                    <img src="" alt="">
+                </div>
+                <p>Entre estas opções, o Paulo Gustabo foi o mais buscado no Google em 2021.</p>
+                <div class="grafico">
+                    <canvas id="chart4" width="200" height="120"></canvas>
+                </div>
+            
+            </div>
+
+            <div id="p5">
+                <div class="resultado">
+                    <h2>Você acertou!</h2>
+                    <img src="" alt="">
+                </div>
+                <p>Entre estas opções, a Rebeca Andrade foi a mais buscado no Google em 2021.</p>
+                <div class="grafico">
+                    <canvas id="chart5" width="200" height="120"></canvas>
+                </div>
+            
+            </div>
+            
+            <button class="proxima">Próxima questão</button>
+            <button class="resultado">Ver resultado</button>
+
+        </section>
+
+        <section class="resultado-final">
+            <h1>Você arrasou!</h1>
+            <p>Acertou 80% das questões.</p>
+            <div class="resultado-botoes">
+                <button class="share">
+                    <img src="/quiz/imagens/send.svg" alt="">
+                    Compartilhar jogo</button>
+                <button class="replay">
+                    <img src="/quiz/imagens/corner-up-left.svg" alt="">
+                    Jogar novamente</button>
+            </div>
+
+        </section>
+
+
+    </main>    
+</body>
+</html>
