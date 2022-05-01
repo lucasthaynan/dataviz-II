@@ -204,7 +204,7 @@ section.popup {
     box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
     border-radius: 30px;    
 
-    animation: showSweetAlert .3s;
+    /* animation: showSweetAlert .3s; */
     
     /* ocultar */
     display: none;
@@ -409,7 +409,7 @@ section.popup.close {
         height: 520px;
         padding: 30px 35px;
 
-        display: none;
+        /* display: none; */
     }
     h1.pergunta {
         font-size: 1.3rem;
@@ -470,7 +470,7 @@ section.popup.close {
     /* responsive resultado-final */
 
     section.resultado-final {
-        display: block;
+        /* display: block; */
         width: 90vw;
         height: 315px;
     }
