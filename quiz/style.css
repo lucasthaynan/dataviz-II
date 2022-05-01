@@ -363,11 +363,11 @@ button.replay > img {
 
 /* adcionando animação de abertura do pop-up */
 section.popup.open {
-    animation: open 0.5s forwards;
+    animation: open 0.8s forwards;
 }
 
 section.popup.close {
-    animation: close 0.5s forwards;
+    animation: close 0.8s forwards;
 }
 
 @keyframes open {
