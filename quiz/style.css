@@ -441,6 +441,7 @@ section.popup.close {
     section.popup {
         /* display: block; */
         width: 90vw;
+        height: 524px;
     }
 
     section.popup p {
@@ -453,8 +454,8 @@ section.popup.close {
     }
 
     button.confirmar, button.proxima, button.resultado {
-        font-size: 1rem;
-        padding: 10px; 
+        font-size: 1.1rem;
+        padding: 10px 20px; 
     }
     
 
