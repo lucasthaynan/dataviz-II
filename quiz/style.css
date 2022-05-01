@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+:root {
+    --amarelo: #FFDA62;
+    --verde: #2BC28F;
+    --vermelho: #F86754;
+    --azul: #4A95EB;
+    --fonte-azul: #1F355D;
+    --branco: #FFF;
+    --cinza: #EEEEEE;
+}
+
+body {
+    background-color: var(--amarelo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter';
+    font-size: 1rem;
+
+}
+
+section.questao {
+    /* centralizar container branco na tela */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 600px;
+    height: 400px;
+    background-color: var(--branco);
+    padding: 40px 55px;
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;  
+    
+    /* ocultar */
+    /* display: none; */
+}
+
+section.questao > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h1.pergunta {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    color: var(--fonte-azul);
+    margin-top: 10px;
+    
+}
+
+div.alternativas ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    row-gap: 16px;
+    
+    
+}
+
+div.alternativas ul > button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    color: var(--fonte-azul);
+    
+    /* removendo pontinhos do ul li */
+    list-style-type: none;
+
+
+    background: var(--cinza);
+    border-radius: 7px;
+    padding: 13px 25px;  
+    
+    width: calc(50% - 10px);  
+
+    transition: 0.2s;
+    text-align: left;
+    
+}
+
+div.alternativas ul > button:hover {
+    background-color: var(--amarelo);
+}
+
+div.alternativas ul > button:focus {
+    background-color: var(--amarelo);
+    /* border: 1px solid var(--fonte-azul); */
+}
+
+button {
+    /* RESET STYLE ALL BUTTON */
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button.confirmar, 
+button.proxima,
+button.resultado {
+    background-color: var(--azul);
+    padding: 12px 30px;
+    margin: 0 auto;
+    
+    color: var(--branco);
+    border-radius: 15px;
+    font-size: 1.2rem;
+    
+    margin-top: 20px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+section.popup button.resultado {
+    background-color: var(--verde);
+    display: none;
+}
+
+section.popup button.proxima {
+    margin-top: 10px;
+    
+}
+
+div.progresso {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.barra {
+    width: 80%;
+    height: 10px;
+    background-color: var(--cinza);
+    border-radius: 20px;
+    
+}
+
+div.barra .barra-preenchida {
+    width: 20%;
+    height: 10px;
+    background-color: var(--azul);
+    border-radius: 20px;
+}
+
+#q2 div.barra .barra-preenchida {
+    width: 40%; 
+}
+#q3 div.barra .barra-preenchida {
+    width: 60%; 
+}
+#q4 div.barra .barra-preenchida {
+    width: 80%; 
+}
+#q5 div.barra .barra-preenchida {
+    width: 100%; 
+}
+
+
+
+
+div.progresso > p {
+    font-size: 0.9rem;
+    text-align: right;
+    color: rgb(78, 78, 78);
+}
+
+
+section.popup {
+    /* centralizar container branco na tela */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 630px;
+    height: 470px;
+    background-color: var(--branco);       
+     
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;    
+
+    animation: showSweetAlert .3s;
+    
+    /* ocultar */
+    display: none;
+}
+
+/* ocultando questões(div) de 2 a 5. Deixando visível apenas a primeira */
+/* section.popup > div:nth-child(n+2):nth-child(-n+5) {
+    display: none;
+} */
+
+section.popup div.resultado {
+    background-color: var(--verde);
+    border-radius: 30px 30px 0px 0px;       
+}
+
+div.resultado > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 20px 0px 3px 0px; 
+    color: var(--branco);   
+}
+
+section.popup p{
+    padding: 0 60px;
+    color: var(--fonte-azul);
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px;
+    font-size: 1.2rem;
+}
+
+section.popup div.grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 380px;
+    height: 240px;
+
+    margin: 0 auto;
+
+
+}
+
+canvas{
+
+    width:200px;
+    height:300px;
+  
+  }
+
+/* section.popup #p1,
+section.popup #p2,
+section.popup #p3 {
+    display: none;
+} */
+
+
+section.resultado-final {
+    /* centralizar container branco na tela */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 520px;
+    height: 240px;
+    background-color: var(--branco);
+    padding: 45px 45px;
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;  
+    
+    /* ocultar */
+    display: none;
+}
+
+section.resultado-final > h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 2rem;
+    color: var(--fonte-azul);
+   
+}
+
+section.resultado-final > p {    
+    color: var(--fonte-azul);
+    font-style: normal;
+    font-weight: 500;    
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+section.resultado-final .resultado-botoes {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.resultado-botoes button.share {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    
+    color: var(--branco);
+    
+    background: var(--verde);
+    border-radius: 15px;
+    padding: 13px 15px;
+    width: 47%;
+ 
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.resultado-botoes button.replay {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 47%;
+    
+    color: var(--branco);
+    
+    background: var(--azul);
+    border-radius: 15px;
+    padding: 13px 15px;  
+ 
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+button.share > img {
+    width: 20px;
+} 
+
+button.replay > img {
+    width: 20px;
+} 
+
+
+#chart {
+    max-width: 650px;
+    margin: 5px auto;
+  }
+
+
+/* adcionando animação de abertura do pop-up */
+section.popup.open {
+    animation: open 0.5s forwards;
+}
+
+section.popup.close {
+    animation: close 0.5s forwards;
+}
+
+@keyframes open {
+    0% { 
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    70% { 
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes close {
+    100% { 
+        transform: translate(-50%, -50%) scale(0);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    5% { 
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 680px) {
+
+    section.questao {
+        max-width: 90vw;
+        height: 520px;
+        padding: 30px 35px;
+
+        display: none;
+    }
+    h1.pergunta {
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+    }
+
+    div.alternativas ul > button {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+        width: 100%;
+    }
+
+    div.alternativas ul {
+        flex-direction: column;
+        row-gap: 12px;
+    }
+
+    div.barra {
+        width: 70%;
+    }
+
+    div.progresso > p {
+        width: 30%;
+    }
+
+
+    /* responsive pop-up */
+
+    section.popup {
+        /* display: block; */
+        width: 90vw;
+    }
+
+    section.popup p {
+        font-size: 1rem;
+        padding: 0 30px;
+    }
+
+    section.popup div.grafico {
+        width: 80vw;
+    }
+
+    button.confirmar, button.proxima, button.resultado {
+        font-size: 1rem;
+        padding: 10px; 
+    }
+    
+
+}
+
+@media (max-width:680px) and (min-width: 460px) {
+    section.popup div.grafico {
+        width: 400px;
+    }
+}
+
+@media (max-width: 560px) {
+    /* responsive resultado-final */
+
+    section.resultado-final {
+        display: block;
+        width: 90vw;
+        height: 315px;
+    }
+
+    section.resultado-final .resultado-botoes {
+        flex-direction: column;
+        margin-top: 20px;
+        row-gap: 10px;
+        align-items: center;
+    }
+
+    .resultado-botoes button.share,
+    .resultado-botoes button.replay {
+        width: 210px;
+
+    }
+
+}
+
+
+
+
