@@ -473,7 +473,7 @@ section.popup.close {
     section.resultado-final {
         /* display: block; */
         width: 90vw;
-        height: 315px;
+        height: 340px;
     }
 
     section.resultado-final .resultado-botoes {
@@ -491,6 +491,20 @@ section.popup.close {
 
 }
 
+@media (max-width: 400px) {
 
+    section.questao > div {
+        gap: 10px;
+    }
+
+    div.barra {
+        width: 65%;
+    }
+
+    div.progresso > p {
+        width: 35%;
+        font-size: 0.8rem;
+    }
+}
 
 
