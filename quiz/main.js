@@ -1,4 +1,14 @@
 
+// let botaoIniciar = document.querySelector('button.iniciar')
+// console.log(botaoIniciar)
+
+document.querySelector('button.iniciar').addEventListener('click', e => {
+    console.log('iniciar...')
+    document.querySelector('section.intro').style.display = 'none';
+    document.querySelector('section.questao').style.display = 'block';
+})
+
+
 // OCULTANDO QUESTÕES DA PÁGINA
 document.querySelectorAll('section.questao .desativada').forEach(questao => {
 
@@ -334,7 +344,7 @@ let idGrafico4 = 'chart4';
 gerandoGrafico(idGrafico4, labelsGrafico4, dataGrafico4);
 
 // GRÁFICO 5
-let labelsGrafico5 = ['Rebeca Andrade','Isaquias Queiroz','Simone Biles','Ítalo Ferreira'];
+let labelsGrafico5 = [['Rebeca', 'Andrade'],['Isaquias', 'Queiroz'],['Simone', 'Biles'],['Ítalo', 'Ferreira']];
 let dataGrafico5 = [4, 2, 2, 1];
 let idGrafico5 = 'chart5';
 gerandoGrafico(idGrafico5, labelsGrafico5, dataGrafico5);
@@ -369,7 +379,7 @@ function gerandoGrafico (idGrafico, labels, valores) {
              },
              title: {
                 display: true,
-                text: 'Média de buscas em 2021'
+                text: 'Média de interesse de buscas no período'
                 }
             }        
         }

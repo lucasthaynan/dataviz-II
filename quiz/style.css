@@ -27,6 +27,61 @@ body {
 
 }
 
+
+section.popup a {
+    color: #6981ae;
+    font-size: .9rem;
+    text-align: center; 
+    width: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    text-decoration: underline;
+}
+
+/* section.popup div div.infos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+} */
+
+
+section.intro {
+    /* centralizar container branco na tela */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 450px;
+    height: 300px;
+    background-color: var(--branco);
+    padding: 40px 40px;
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;  
+    
+    /* ocultar */
+    /* display: none; */
+}   
+
+
+h1.texto-inicio {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    color: var(--fonte-azul);
+    margin-top: 10px;
+    padding: 10px 10px;
+    padding-bottom: 20px;
+    text-align: center;
+    
+}
+
+
 section.questao {
     /* centralizar container branco na tela */
     position: absolute;
@@ -43,7 +98,8 @@ section.questao {
     border-radius: 30px;  
     
     /* ocultar */
-    /* display: none; */
+    display: none;
+    
 }
 
 section.questao > div {
@@ -120,6 +176,7 @@ button {
 	outline: inherit;
 }
 
+button.iniciar,
 button.confirmar, 
 button.proxima,
 button.resultado {
@@ -142,6 +199,20 @@ button.resultado {
 button.confirmar {
     background-color: #EEEEEE;
     pointer-events: none;
+}
+
+section.intro button.iniciar {
+    pointer-events: auto;
+    background-color: var(--verde);
+    transition: all 0.3s;
+
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+section.intro button.iniciar:hover {
+    pointer-events: auto;
+    background-color: #209d73;
 }
 
 section.questao.ativar-botao > .confirmar {
@@ -250,7 +321,7 @@ section.popup p{
     font-weight: 500;
     text-align: center;
     margin: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 section.popup div.grafico {
@@ -419,6 +490,22 @@ section.popup.close {
 
 @media (max-width: 680px) {
 
+    section.popup div.grafico {
+        height: 215px;
+    }
+
+    section.intro {
+        max-width: 90vw;
+        height: 270px;
+        padding: 30px 25px;       
+
+    }
+
+    section.intro > h1 {
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+    }
+
     section.questao {
         max-width: 90vw;
         height: 520px;
@@ -461,7 +548,7 @@ section.popup.close {
 
     section.popup p {
         font-size: 1rem;
-        padding: 0 30px;
+        padding: 10px 20px;
     }
 
     section.popup div.grafico {
@@ -482,8 +569,30 @@ section.popup.close {
     }
 }
 
+@media (max-width: 440px) {
+
+    section.intro {
+        max-width: 90vw;
+        height: 300px;
+        padding: 30px 25px;       
+
+    }
+
+    section.intro > h1 {
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+    }
+
+    section.intro > button.iniciar {
+        font-size: 1.3rem;
+    }
+}
+
 @media (max-width: 560px) {
+
+    
     /* responsive resultado-final */
+    
 
     section.resultado-final {
         /* display: block; */
