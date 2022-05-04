@@ -92,6 +92,8 @@ div.alternativas ul > button {
 
     transition: 0.2s;
     text-align: left;
+
+    
     
 }
 
@@ -103,6 +105,9 @@ div.alternativas ul > button:focus {
     background-color: var(--amarelo);
     /* border: 1px solid var(--fonte-azul); */
 }
+
+/* div.alternativas ul > button */
+
 
 button {
     /* RESET STYLE ALL BUTTON */
@@ -132,6 +137,16 @@ button.resultado {
     justify-content: center;
     align-items: center;
     
+}
+
+button.confirmar {
+    background-color: #EEEEEE;
+    pointer-events: none;
+}
+
+section.questao.ativar-botao > .confirmar {
+    pointer-events: auto;
+    background-color: var(--azul);
 }
 
 section.popup button.resultado {
@@ -506,5 +521,3 @@ section.popup.close {
         font-size: 0.8rem;
     }
 }
-
-

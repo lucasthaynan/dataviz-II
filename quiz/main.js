@@ -6,6 +6,27 @@ document.querySelectorAll('section.questao .desativada').forEach(questao => {
   
   });
 
+// habilitarBotaoConfirmar()
+
+function habilitarBotaoConfirmar (sim) {
+
+    console.log(sim)
+    
+    if (sim == true) {
+
+        document.querySelector("section.questao button.confirmar").style.backgroundColor = "#4A95EB";
+
+        document.getElementById("#btn-confirmar").disabled = "false";
+        
+    } else {
+        document.querySelector("section.questao button.confirmar").style.backgroundColor = "#EEEEEE";
+
+        document.getElementById("#btn-confirmar").disabled = "true";
+    }    
+
+}
+    
+
 // nota inicial do usuário
 let notaUsuario = 0
 
@@ -22,7 +43,9 @@ console.log(idPopUpAtual)
 // chamando função de ativar questão atual
 ativandoQuestao()
 
+
 function ativandoQuestao () {
+    console.log('teste')
     // PEGA TODAS AS ALTERNATIVAS DA QUESTÃO ATUAL
     let alternativas = document.querySelectorAll(idQuestaoAtual + ' ul > button')
 
@@ -43,6 +66,10 @@ function ativandoQuestao () {
         // depois adiciona classe 'selecionada' no botão clicado
         e.target.classList.add('selecionada')
 
+        document.querySelector('.questao').classList.add('ativar-botao') 
+        console.log('teste')
+        // habilitarBotaoConfirmar(true)
+
     }
 }
 
@@ -54,61 +81,71 @@ document.querySelector('button.confirmar').addEventListener('click', verificarRe
 
 function verificarResposta () {    
 
-    let btns = document.querySelectorAll(idQuestaoAtual + ' ul > button')
+    let existeAlternativaSelecionada = document.querySelector('.questao').classList.contains('ativar-botao')
 
-    for ( let botao of btns ) {
-        // console.log(botao)
-        if (botao.classList.contains('certa')) {
-            if (botao.classList.contains('selecionada')) {
+    if (existeAlternativaSelecionada) {
 
-                console.log('ACERTOU')
-                notaUsuario += 1
+        let btns = document.querySelectorAll(idQuestaoAtual + ' ul > button')
 
-                 // muda a cor do destaque do popup para verde
-                document.querySelectorAll('section.popup div.resultado').forEach(event => {
-                    event.style.backgroundColor = '#2BC28F';
-                })
+        for ( let botao of btns ) {
+            // console.log(botao)
+            if (botao.classList.contains('certa')) {
+                if (botao.classList.contains('selecionada')) {
 
-                // alterando texto da mensgem de acertou ou erro
-                document.querySelectorAll('div.resultado > h2').forEach(event => {
-                    event.innerHTML = 'Você acertou! 👏🏼👏🏼'
-                })
+                    console.log('ACERTOU')
+                    notaUsuario += 1
 
-                // chama a função de mostrar o popup
-                popUp()
+                    // muda a cor do destaque do popup para verde
+                    document.querySelectorAll('section.popup div.resultado').forEach(event => {
+                        event.style.backgroundColor = '#2BC28F';
+                    })
 
-            } else {
+                    // alterando texto da mensgem de acertou ou erro
+                    document.querySelectorAll('div.resultado > h2').forEach(event => {
+                        event.innerHTML = 'Você acertou! 👏🏼👏🏼'
+                    })
 
-                console.log('ERROU')     
+                    // chama a função de mostrar o popup
+                    popUp()
 
-                
-                // muda a cor do destaque do popup para vermelho
-                document.querySelectorAll('section.popup div.resultado').forEach(event => {
-                    event.style.backgroundColor = '#F86754';
-                })
-                
-                // alterando texto da mensgem de acertou ou erro
-                document.querySelectorAll('div.resultado > h2').forEach(event => {
-                    event.innerHTML = 'Ops, você errou! 😥'
-                })
-                
-                // chama a função de mostrar o popup
-                popUp()
+                } else {
 
-            }
-        }    
-    
-          
+                    console.log('ERROU')     
+
+                    
+                    // muda a cor do destaque do popup para vermelho
+                    document.querySelectorAll('section.popup div.resultado').forEach(event => {
+                        event.style.backgroundColor = '#F86754';
+                    })
+                    
+                    // alterando texto da mensgem de acertou ou erro
+                    document.querySelectorAll('div.resultado > h2').forEach(event => {
+                        event.innerHTML = 'Ops, você errou! 😥'
+                    })
+                    
+                    // chama a função de mostrar o popup
+                    popUp()
+
+                }
+            }   
+        
+            
+        }
+
+        // atualiza variáveis da questao e pop-up atuais
+        alternativaAtual += 1
+        idQuestaoAtual = '#q' + alternativaAtual
+        console.log('idQuestaoAtual: ' + idQuestaoAtual)
+
+        popUpAtual += 1
+        idPopUpAtual = '#p' + popUpAtual  
+        console.log('idPopUpAtual:' + idPopUpAtual) 
+
+    } else {
+        console.log('clica na alternativa, cristão!')
     }
 
-    // atualiza variáveis da questao e pop-up atuais
-    alternativaAtual += 1
-    idQuestaoAtual = '#q' + alternativaAtual
-    console.log('idQuestaoAtual: ' + idQuestaoAtual)
-
-    popUpAtual += 1
-    idPopUpAtual = '#p' + popUpAtual  
-    console.log('idPopUpAtual:' + idPopUpAtual) 
+    
 
 }
 
@@ -217,7 +254,7 @@ function proximaQuestao () {
     document.querySelector('section.popup').style.display = 'none';
     document.querySelector(idQuestaoAtual).style.display = 'flex'
 
-    
+    document.querySelector('.questao').classList.remove('ativar-botao')
     
     // chamando função de ativar questão atual
     ativandoQuestao()
