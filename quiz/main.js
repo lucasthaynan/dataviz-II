@@ -9,6 +9,7 @@ document.querySelector('button.iniciar').addEventListener('click', e => {
 })
 
 
+
 // OCULTANDO QUESTÕES DA PÁGINA
 document.querySelectorAll('section.questao .desativada').forEach(questao => {
 
@@ -39,6 +40,9 @@ function habilitarBotaoConfirmar (sim) {
 
 // nota inicial do usuário
 let notaUsuario = 0
+
+let notaFinalUsuario = ''
+
 
 // VARIÁVEIS PARA DEFINIR QUESTÃO E POPUP ATUAIS
 let alternativaAtual = 1
@@ -305,9 +309,13 @@ function calculandoNota (notaUsuario) {
         TituloNota = 'Parabéns, você arrasou!'
 
     }
-    notaFinalUsuario = (notaUsuario * 100) / 5
-    notaFinalUsuario = 'Acertou ' + notaFinalUsuario + '% das questões.'
+    nota = (notaUsuario * 100) / 5
+    notaFinalUsuario = 'Acertou ' + nota + '% das questões.'
+    
+    resultadoFinalUsuario = 'Acertei ' + nota + '% das questões do Quiz das Buscas do Google. Jogo também em: https://lucasthaynan.github.io/dataviz-II/quiz/index.html'
 
+    console.log(resultadoFinalUsuario)
+    
     document.querySelector('section.resultado-final > h1').innerHTML = TituloNota
     document.querySelector('section.resultado-final > p').innerHTML = notaFinalUsuario
     
@@ -390,6 +398,38 @@ function gerandoGrafico (idGrafico, labels, valores) {
         config
       );
 };
+  
+//  pegando variáveis do botão de "copiar resultado"
+let buttonShare = document.querySelector( 'button.share' )
+let textoButtonShare = document.querySelector( 'button.share p' )
+let imgButtonShare = document.querySelector( 'button.share img' )
+
+//  função pra resetar o botão de "copiar resultado" para as configurações padrôes
+function resetar() {
+    textoButtonShare.innerHTML = 'Copiar resultado'
+    imgButtonShare.src = 'imagens/bxs_copy.svg'
+    buttonShare.style.backgroundColor = '#2BC28F'
+  }
+
+function copiarTexto() { 
+
+    // alterar imagem do botão
+    imgButtonShare.src = 'imagens/el_ok-sign.svg'
+
+    // alterar cor do botão
+    buttonShare.style.backgroundColor = '#209e74'
+
+    // alterar texto do botão
+    textoButtonShare.textContent = 'Copiado!!!'
+
+    // chamar função para resentar botão após 2 mil milissegundos
+    setTimeout( resetar, 2000 )         
+  
+    // copiar texto automaticamente
+    navigator.clipboard.writeText(resultadoFinalUsuario);
+    
+  }
+
   
 
   
