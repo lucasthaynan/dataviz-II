@@ -1,6 +1,5 @@
 
-// let botaoIniciar = document.querySelector('button.iniciar')
-// console.log(botaoIniciar)
+// ao clicar no botão 'iniciar' ocultar container da section intro e aparecer o da questão
 
 document.querySelector('button.iniciar').addEventListener('click', e => {
     console.log('iniciar...')
@@ -17,21 +16,17 @@ document.querySelectorAll('section.questao .desativada').forEach(questao => {
   
   });
 
-// habilitarBotaoConfirmar()
+
+
 
 function habilitarBotaoConfirmar (sim) {
-
-    console.log(sim)
     
     if (sim == true) {
-
         document.querySelector("section.questao button.confirmar").style.backgroundColor = "#4A95EB";
-
         document.getElementById("#btn-confirmar").disabled = "false";
         
     } else {
         document.querySelector("section.questao button.confirmar").style.backgroundColor = "#EEEEEE";
-
         document.getElementById("#btn-confirmar").disabled = "true";
     }    
 
@@ -41,6 +36,7 @@ function habilitarBotaoConfirmar (sim) {
 // nota inicial do usuário
 let notaUsuario = 0
 
+// texto da nota final do usuário
 let notaFinalUsuario = ''
 
 
@@ -50,9 +46,6 @@ let idQuestaoAtual = '#q' + alternativaAtual
 
 let popUpAtual = 1
 let idPopUpAtual = '#p' + popUpAtual
-
-console.log(idQuestaoAtual)
-console.log(idPopUpAtual)
 
 // chamando função de ativar questão atual
 ativandoQuestao()
@@ -70,7 +63,6 @@ function ativandoQuestao () {
 
     // ADICIONAR CLASS 'SELECIONADA' NA OPCAO ESCOLHIDA DA QUESTÃO
     function selecionarOpcao (e) {
-        // console.log(e.target.textContent)
 
         let btns = document.querySelectorAll(idQuestaoAtual + ' ul > button')
 
@@ -80,33 +72,35 @@ function ativandoQuestao () {
         // depois adiciona classe 'selecionada' no botão clicado
         e.target.classList.add('selecionada')
 
+        // e depois adiciona na tag pai a classe 'ativar-botao' para habilitar o botão de 'confirmar' na questão
         document.querySelector('.questao').classList.add('ativar-botao') 
-        console.log('teste')
-        // habilitarBotaoConfirmar(true)
 
     }
 }
 
 
 
-// AÇÃO QUANDO O BOTÃO DE 'CONFIRMAR' É APERTADO
+// AÇÃO QUANDO O BOTÃO DE 'CONFIRMAR' É APERTADO CHAMA A FUNÇÃO DE VERIFICAR RESPOSTA
 document.querySelector('button.confirmar').addEventListener('click', verificarResposta)
 
 
-function verificarResposta () {    
+function verificarResposta () { 
+
 
     let existeAlternativaSelecionada = document.querySelector('.questao').classList.contains('ativar-botao')
 
+    // se a classe 'ativar-botao' existir roda o restante do código
     if (existeAlternativaSelecionada) {
 
         let btns = document.querySelectorAll(idQuestaoAtual + ' ul > button')
 
         for ( let botao of btns ) {
-            // console.log(botao)
+
             if (botao.classList.contains('certa')) {
                 if (botao.classList.contains('selecionada')) {
 
-                    console.log('ACERTOU')
+                    
+                    // se o usuário acertou será acrescentado um ponto na nota
                     notaUsuario += 1
 
                     // muda a cor do destaque do popup para verde
@@ -114,7 +108,7 @@ function verificarResposta () {
                         event.style.backgroundColor = '#2BC28F';
                     })
 
-                    // alterando texto da mensgem de acertou ou erro
+                    // alterando texto da mensagem de acertou ou erro
                     document.querySelectorAll('div.resultado > h2').forEach(event => {
                         event.innerHTML = 'Você acertou! 👏🏼👏🏼'
                     })
@@ -123,16 +117,13 @@ function verificarResposta () {
                     popUp()
 
                 } else {
-
-                    console.log('ERROU')     
-
                     
                     // muda a cor do destaque do popup para vermelho
                     document.querySelectorAll('section.popup div.resultado').forEach(event => {
                         event.style.backgroundColor = '#F86754';
                     })
                     
-                    // alterando texto da mensgem de acertou ou erro
+                    // alterando texto da mensagem de acertou ou erro
                     document.querySelectorAll('div.resultado > h2').forEach(event => {
                         event.innerHTML = 'Ops, você errou! 😥'
                     })
@@ -157,17 +148,14 @@ function verificarResposta () {
 
     } else {
         console.log('clica na alternativa, cristão!')
-    }
-
-    
+    }    
 
 }
 
 
 
-// FUNÇÃO PARA MOSTRAR POP-UP CORRESPONDENTE A PERGUNDA
+// FUNÇÃO PARA MOSTRAR POP-UP CORRESPONDENTE A PERGUNTA
 function popUp () {
-
 
     if (alternativaAtual == 1) {
 
@@ -177,7 +165,8 @@ function popUp () {
         document.querySelector('#p4').style.display = 'none';
         document.querySelector('#p5').style.display = 'none';
 
-        console.log('Chamando popup 1')
+        // console.log('Chamando popup 1')
+
         let exibirPopUp = document.querySelector('section.popup')        
         exibirPopUp.style.display = 'block';
 
@@ -192,7 +181,7 @@ function popUp () {
         document.querySelector('#p4').style.display = 'none';
         document.querySelector('#p5').style.display = 'none';
 
-        console.log('Chamando popup 2')
+        // console.log('Chamando popup 2')
         let exibirPopUp = document.querySelector('section.popup')        
         exibirPopUp.style.display = 'block';
 
@@ -208,7 +197,7 @@ function popUp () {
         document.querySelector('#p4').style.display = 'none';
         document.querySelector('#p5').style.display = 'none';
 
-        console.log('Chamando popup 3')
+        // console.log('Chamando popup 3')
         let exibirPopUp = document.querySelector('section.popup')        
         exibirPopUp.style.display = 'block';
 
@@ -223,7 +212,7 @@ function popUp () {
         document.querySelector('#p3').style.display = 'none';
         document.querySelector('#p5').style.display = 'none';
 
-        console.log('Chamando popup 3')
+        // console.log('Chamando popup 3')
         let exibirPopUp = document.querySelector('section.popup')        
         exibirPopUp.style.display = 'block';
 
@@ -238,7 +227,7 @@ function popUp () {
         document.querySelector('#p3').style.display = 'none';
         document.querySelector('#p4').style.display = 'none';
 
-        console.log('Chamando popup 3')
+        // console.log('Chamando popup 3')
         let exibirPopUp = document.querySelector('section.popup')        
         exibirPopUp.style.display = 'block';
 
@@ -249,8 +238,7 @@ function popUp () {
         verResultadoFinal()
         
     }
-
-    
+   
 
     // ocultando questão atual
     document.querySelector(idQuestaoAtual).style.display = 'none'
@@ -260,11 +248,10 @@ function popUp () {
 // AO CLICAR NO BOTÃO 'PRÓXIMA QUESTÃO' NO POP-UP EXECUTA A FUNÇÃO ABAIXO
 document.querySelector('button.proxima').addEventListener('click', proximaQuestao)
 
-function proximaQuestao () {  
+function proximaQuestao () {      
     
-    
-    console.log('idQuestaoAtual:')
-    console.log(idQuestaoAtual)
+    // console.log('idQuestaoAtual:')
+    // console.log(idQuestaoAtual)
     document.querySelector('section.popup').style.display = 'none';
     document.querySelector(idQuestaoAtual).style.display = 'flex'
 
@@ -282,7 +269,7 @@ function verResultadoFinal () {
     document.querySelector('section.popup button.resultado').style.display = 'block';
 
     // executando função ao clicar no botão 'ver resultado'
-    document.querySelector('button.resultado').addEventListener('click', funcaoInter => {
+    document.querySelector('button.resultado').addEventListener('click', e => {
         // ocultado os elementos das questões e pop-up
         document.querySelector('section.questao').style.display = 'none';
         document.querySelector('section.popup').style.display = 'none';
@@ -293,6 +280,7 @@ function verResultadoFinal () {
     })    
 }
 
+// função que calcula a nota final do usuário
 
 function calculandoNota (notaUsuario) {
     if (notaUsuario == 0) {
@@ -312,10 +300,9 @@ function calculandoNota (notaUsuario) {
     nota = (notaUsuario * 100) / 5
     notaFinalUsuario = 'Acertou ' + nota + '% das questões.'
     
-    resultadoFinalUsuario = 'Acertei ' + nota + '% das questões do Quiz das Buscas do Google. Jogo também em: https://lucasthaynan.github.io/dataviz-II/quiz/index.html'
+    resultadoFinalUsuario = 'Acertei ' + nota + '% das questões do Quiz das Buscas no Google. Jogue também em >> https://lucasthaynan.github.io/dataviz-II/quiz/index.html'
 
-    console.log(resultadoFinalUsuario)
-    
+   
     document.querySelector('section.resultado-final > h1').innerHTML = TituloNota
     document.querySelector('section.resultado-final > p').innerHTML = notaFinalUsuario
     
@@ -359,7 +346,7 @@ gerandoGrafico(idGrafico5, labelsGrafico5, dataGrafico5);
 
 
 
-// FUNÇÃO DE GERAR GRÁFICO
+// FUNÇÃO DE GERAR GRÁFICO COM O CHART.JS
 
 function gerandoGrafico (idGrafico, labels, valores) {
     const data = {
@@ -404,7 +391,7 @@ let buttonShare = document.querySelector( 'button.share' )
 let textoButtonShare = document.querySelector( 'button.share p' )
 let imgButtonShare = document.querySelector( 'button.share img' )
 
-//  função pra resetar o botão de "copiar resultado" para as configurações padrôes
+//  função pra resetar o botão de "copiar resultado" para as configurações padrões
 function resetar() {
     textoButtonShare.innerHTML = 'Copiar resultado'
     imgButtonShare.src = 'imagens/bxs_copy.svg'
