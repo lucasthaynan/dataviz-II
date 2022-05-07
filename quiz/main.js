@@ -322,7 +322,7 @@ gerandoGrafico(idGrafico1, labelsGrafico1, dataGrafico1);
 
 // GRÁFICO 2
 let labelsGrafico2 = ['Jair Bolsonaro','Lula','Ciro Gomes','Sérgio Moro'];
-let dataGrafico2 = [20, 10, 5, 2];
+let dataGrafico2 = [33, 10, 1, 2];
 let idGrafico2 = 'chart2';
 gerandoGrafico(idGrafico2, labelsGrafico2, dataGrafico2);
 
