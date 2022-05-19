@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #0A192F;
+}
+
+div.texto {
+    
+    width: 476px;
+    position: absolute;
+    top: 200px;
+    z-index: 10;    
+
+}
+
+div.texto div {
+    display: none;
+}
+
+div.texto div > p {
+    margin: 0 40px;
+    text-align: center;
+    color: #739EC9;    
+}
+
+div.texto div.ativo {
+    display: block;
+}
+
+
+
+section.grafico {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div.container-grafico {
+    width: 476px;
+    
+}
+
+div.container-grafico span > div {
+    width: 50px;
+    height: 50px;
+    border: 3px solid white;
+
+    /* resolve bug do espaçamento entre as divs */
+    margin-bottom: -6px;
+    margin-right: -6px;
+}
+
+div.container-grafico span.youtube > div {
+    display: inline-block;
+
+    background: rgba(204, 80, 62, 0.35);
+    border: 3px solid #CC503E;
+
+    /* animation: animacao-tetris 4s steps(15, end) 1;  */
+    
+}
+
+.youtube.ativo > div {
+    animation: animacao-youtube 6s steps(15, end) 1; 
+}
+
+.instagram.ativo > div {
+    animation: animacao-instagram 6s steps(15, end) 1; 
+}
+
+.whatsapp.ativo > div {
+    animation: animacao-whatsapp 6s steps(15, end) 1; 
+}
+
+.chrome.ativo > div {
+    animation: animacao-chrome 6s steps(15, end) 1; 
+}
+
+.twitter.ativo > div {
+    animation: animacao-twitter 6s steps(15, end) 1; 
+}
+
+.free-fire.ativo > div {
+    animation: animacao-free-fire 6s steps(15, end) 1; 
+}
+
+.outros-apps.ativo > div {
+    animation: animacao-outros-apps 6s steps(15, end) 1; 
+}
+
+
+
+
+@keyframes animacao-youtube {
+    0% {
+        top: 0;
+        transform: translateY(-550px);
+    }
+}
+
+@keyframes animacao-instagram {
+    0% {
+        top: 0;
+        transform: translateY(-550px);
+    }
+}
+
+
+@keyframes animacao-whatsapp {
+    0% {
+        top: 0;
+        transform: translateY(-350px);
+    }
+}
+
+
+@keyframes animacao-chrome {
+    0% {
+        top: 0;
+        transform: translateY(-250px);
+    }
+}
+
+@keyframes animacao-twitter {
+    0% {
+        top: 0;
+        transform: translateY(-200px);
+    }
+}
+
+
+@keyframes animacao-free-fire {
+    0% {
+        top: 0;
+        transform: translateY(-150px);
+    }
+}
+
+@keyframes animacao-outros-apps {
+    0% {
+        top: 0;
+        transform: translateY(-100px);
+    }
+}
+
+
+div.container-grafico span.instagram > div {    
+    display: inline-block;
+
+    background: rgba(182, 92, 204, 0.35);
+    border: 3px solid #B65CCC;
+
+    opacity: 0;
+    
+}
+
+div.container-grafico span.whatsapp > div {    
+    display: inline-block;
+    background: rgba(17, 165, 121, 0.35);
+    border: 3px solid #11A579;
+
+    opacity: 0;
+    
+}
+
+div.container-grafico span.chrome > div {    
+    display: inline-block;
+    background: rgba(242, 183, 1, 0.35);
+    border: 3px solid #F2B701;
+
+    opacity: 0;
+
+    
+}
+
+div.container-grafico span.twitter > div {    
+    display: inline-block;
+    background: rgba(75, 181, 239, 0.35);
+    border: 3px solid #4BB5EF;
+
+    opacity: 0;
+
+    
+}
+
+div.container-grafico span.free-fire > div {    
+    display: inline-block;
+    background: rgba(126, 182, 89, 0.35);
+    border: 3px solid #7EB659;
+
+    opacity: 0;
+
+    
+}
+
+div.container-grafico span.outros-apps > div {    
+    display: inline-block;
+    border: 3px solid #365471;
+    order: 1;
+
+    opacity: 0;
+
+    
+}
+
+
+button {
+    /* RESET STYLE ALL BUTTON */
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button.proximo {
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+button.proximo img {
+    width: 60px;
+}
