@@ -9,17 +9,10 @@
 
 body {
     font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
     background-color: #0A192F;
 }
 
-div.texto {
-    
-    width: 476px;
-    position: absolute;
-    top: 200px;
-    z-index: 10;    
-
-}
 
 div.texto div {
     display: none;
@@ -27,13 +20,107 @@ div.texto div {
 
 div.texto div > p {
     margin: 0 40px;
+    margin-bottom: 15px;
     text-align: center;
-    color: #739EC9;    
+    color: #739EC9;   
 }
 
 div.texto div.ativo {
     display: block;
 }
+
+
+div.texto .texto-youtube {    
+    width: 476px;
+    position: absolute;
+    top: 150px;
+    z-index: 10;  
+}
+
+div.texto .texto-youtube strong {
+    color: #CC503E;
+    font-style: bold;
+}
+
+
+div.texto .texto-instagram {    
+    width: 476px;
+    position: absolute;
+    top: 110px;
+    z-index: 10;  
+}
+
+div.texto .texto-instagram strong {
+    color: #B65CCC;
+    font-style: bold;
+}
+
+div.texto .texto-whatsapp {    
+    width: 476px;
+    position: absolute;
+    top: 110px;
+    z-index: 10;  
+}
+
+div.texto .texto-whatsapp strong {
+    color: #11A579;
+    font-style: bold;
+}
+
+div.texto .texto-chrome {    
+    width: 476px;
+    position: absolute;
+    top: 40px;
+    z-index: 10;  
+    
+}
+
+div.texto .texto-chrome strong {
+    color: #F2B701;
+    font-style: bold;
+}
+
+
+div.texto .texto-twitter {    
+    width: 476px;
+    position: absolute;
+    top: 30px;
+    z-index: 10;  
+    
+}
+
+div.texto .texto-twitter strong {
+    color: #4BB5EF;
+    font-style: bold;
+}
+
+div.texto .texto-free-fire {    
+    width: 476px;
+    position: absolute;
+    top: 20px;
+    z-index: 10;  
+    
+}
+
+div.texto .texto-free-fire strong {
+    color: #7EB659;
+    font-style: bold;
+}
+
+
+div.texto .texto-outros-apps {    
+    width: 476px;
+    position: absolute;
+    top: 20px;
+    z-index: 10;  
+    
+}
+
+div.texto .texto-outros-apps strong {
+    font-style: bold;
+}
+
+
 
 
 
@@ -74,27 +161,27 @@ div.container-grafico span.youtube > div {
 }
 
 .instagram.ativo > div {
-    animation: animacao-instagram 6s steps(15, end) 1; 
+    animation: animacao-instagram 5.5s steps(15, end) 1; 
 }
 
 .whatsapp.ativo > div {
-    animation: animacao-whatsapp 6s steps(15, end) 1; 
+    animation: animacao-whatsapp 5s steps(15, end) 1; 
 }
 
 .chrome.ativo > div {
-    animation: animacao-chrome 6s steps(15, end) 1; 
+    animation: animacao-chrome 4.5s steps(15, end) 1; 
 }
 
 .twitter.ativo > div {
-    animation: animacao-twitter 6s steps(15, end) 1; 
+    animation: animacao-twitter 4s steps(15, end) 1; 
 }
 
 .free-fire.ativo > div {
-    animation: animacao-free-fire 6s steps(15, end) 1; 
+    animation: animacao-free-fire 3.5s steps(15, end) 1; 
 }
 
 .outros-apps.ativo > div {
-    animation: animacao-outros-apps 6s steps(15, end) 1; 
+    animation: animacao-outros-apps 3s steps(15, end) 1; 
 }
 
 
@@ -110,7 +197,7 @@ div.container-grafico span.youtube > div {
 @keyframes animacao-instagram {
     0% {
         top: 0;
-        transform: translateY(-550px);
+        transform: translateY(-480px);
     }
 }
 
@@ -126,14 +213,14 @@ div.container-grafico span.youtube > div {
 @keyframes animacao-chrome {
     0% {
         top: 0;
-        transform: translateY(-250px);
+        transform: translateY(-280px);
     }
 }
 
 @keyframes animacao-twitter {
     0% {
         top: 0;
-        transform: translateY(-200px);
+        transform: translateY(-260px);
     }
 }
 
@@ -141,14 +228,14 @@ div.container-grafico span.youtube > div {
 @keyframes animacao-free-fire {
     0% {
         top: 0;
-        transform: translateY(-150px);
+        transform: translateY(-220px);
     }
 }
 
 @keyframes animacao-outros-apps {
     0% {
         top: 0;
-        transform: translateY(-100px);
+        transform: translateY(-200px);
     }
 }
 
