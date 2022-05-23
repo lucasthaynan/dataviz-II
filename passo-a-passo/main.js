@@ -8,13 +8,12 @@ let etapaVisualizacao = 1
 
 document.querySelector('button.proximo').addEventListener('click', e => {
 
-    console.log(e)
-    console.log(etapaVisualizacao)
-
     let textos = document.querySelectorAll('div.texto > div')
-    console.log(textos)
 
-    textos.forEach(texto => texto.classList.remove('ativo'));
+    textos.forEach(texto => {
+        texto.classList.remove('ativo')
+        });
+
 
     if (etapaVisualizacao == 1) {
 
@@ -74,8 +73,8 @@ document.querySelector('button.proximo').addEventListener('click', e => {
         document.querySelector('span.outros-apps').classList.add('ativo') 
         document.querySelector('.texto-outros-apps').classList.add('ativo')
     }
-
+    
     etapaVisualizacao += 1
-    console.log(etapaVisualizacao)    
+
     
 })
