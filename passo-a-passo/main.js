@@ -1,26 +1,25 @@
-// document.querySelector('button.iniciar').addEventListener('click', e => {
-//     console.log('iniciar...')
-//     document.querySelector('section.intro').style.display = 'none';
-//     document.querySelector('section.questao').style.display = 'block';
-// })
-
+// variável que define a etapa atual da visualização
 let etapaVisualizacao = 1
 
+// ao clicar na seta (botão) avança para a próxima etapa
 document.querySelector('button.proximo').addEventListener('click', e => {
 
+    // remove a classe "ativo" de todas os divs de texto
     let textos = document.querySelectorAll('div.texto > div')
 
     textos.forEach(texto => {
         texto.classList.remove('ativo')
         });
 
-
+    // verifica em que etapa está
     if (etapaVisualizacao == 1) {
 
+        // deixa os elementos de blocos visíveis
         document.querySelectorAll('span.instagram > div').forEach(elementoDiv => {
             elementoDiv.style.opacity = 1;
         }) 
 
+        // adiciona a classe "ativo" nos blocos e no texto
         document.querySelector('span.instagram').classList.add('ativo')      
         
         document.querySelector('.texto-instagram').classList.add('ativo')
@@ -73,7 +72,8 @@ document.querySelector('button.proximo').addEventListener('click', e => {
         document.querySelector('span.outros-apps').classList.add('ativo') 
         document.querySelector('.texto-outros-apps').classList.add('ativo')
     }
-    
+
+    // soma + 1 na variável da etapa atual
     etapaVisualizacao += 1
 
     
