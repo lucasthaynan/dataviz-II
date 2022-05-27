@@ -1,0 +1,28 @@
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+div.links {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+a {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: black;
+}
+
+a:hover {
+    color: rgb(62, 62, 62);
+    text-decoration: underline;
+}
+
+
