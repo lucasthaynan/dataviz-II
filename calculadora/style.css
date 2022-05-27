@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+body {
+    background-color: #31C6A0;
+    font-family: 'Inter', sans-serif;
+}
+
+main {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+section.produtos {
+
+    width: 600px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+div.container-produto {
+    background-color: #fff;
+    width: 180px;
+
+    padding: 15px 10px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    
+    row-gap: 8px;
+}
+
+div.container-produto > h2 {
+    font-size: 1rem;
+}
+
+div.container-produto > img {
+    max-width:150px;
+    max-height:120px;
+    width: auto;
+    height: auto;
+ 
+}
+
+input {
+    display: none;
+}
+
+
+button {
+    /* RESET STYLE ALL BUTTON */
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+
+div.operacao {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+
+    gap: 5px;
+    font-size: 1.4rem;
+}
+
+
+div.operacao button.venda {
+    font-weight: bold;
+    color: #1FAA6F;
+
+    border: 1px solid #1FAA6F;
+
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    padding-bottom: 5px;
+}
+
+div.operacao button.compra {
+    font-weight: bold;
+    color: #fff;
+    background-color: #1FAA6F;    
+
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+
+    padding-bottom: 5px;
+}
+
+div.operacao output {
+    width: 50px;
+    text-align: center;
+}
+
+section.resultado div.titulo {
+    width: 300px;
+    background-color: #fff;
+    padding: 20px 20px;
+
+    border-radius: 25px;
+
+    position: fixed;
+}
+
+section.resultado div.titulo > h1 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8rem;   
+    color: #354064;
+}
+
+section.resultado div.valor {
+    margin-top: 20px;
+    width: 300px;
+    background-color: #354064;
+    padding: 20px 20px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    border-radius: 25px;
+
+    position: fixed;
+    top: 170px;
+
+    
+}
+
+section.resultado div.barra-fake {
+    width: 300px;    
+}
+
+
+
+section.resultado div.valor > p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.2rem;   
+    color: #fff;
+}
+
+section.resultado div.lista {
+    color: #fff;
+    width: 300px;
+    padding: 20px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    position: fixed;
+    top: 270px;    
+}
+
+div.lista .item {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
