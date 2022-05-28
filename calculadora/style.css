@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #31C6A0;
+    background-color: #A8DBA8;
     font-family: 'Inter', sans-serif;
 }
 
@@ -41,12 +41,13 @@ div.container-produto {
     flex-direction: column;
     justify-content:center;
     align-items:center;
+    justify-content: space-around;
     
     row-gap: 8px;
 }
 
 div.container-produto > h2 {
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 div.container-produto > img {
@@ -114,6 +115,10 @@ div.operacao button.compra {
 div.operacao output {
     width: 50px;
     text-align: center;
+}
+
+div.container-produto {
+    font-size: 0.85rem;
 }
 
 section.resultado div.titulo {
