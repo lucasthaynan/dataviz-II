@@ -1,8 +1,4 @@
 
-// lendo arquivo csv (teste aleatório)
-d3.csv("/path/to/file.csv").then((data) => {
-    console.log(data);
-  });
 
 // criar array
 
@@ -42,6 +38,11 @@ function calculandoFortuna (precoProduto, tipo) {
 
 document.querySelectorAll('.container-produto').forEach(produto => {
     // console.log(produto)
+    // console.log(produto.classList.contains('unico'))
+
+    
+
+    // console.log(containerA.classList.contains("teste"));
 
     // nome do produto
     let nomeProduto = produto.querySelector('h2')
@@ -49,7 +50,7 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
     //  cria variavel do preço do produto 
     let precoProduto = produto.querySelector('input')
-    precoProduto = parseInt(precoProduto.value)
+    precoProduto = parseFloat(precoProduto.value)
     // console.log(precoProduto)    
     
     //  cria variavel da quantidade do produto
@@ -58,6 +59,9 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
     // preço total do produtos
     let precoFinalProduto = 0
+
+
+    
 
     // tag de mostrar quantidade de produtos
     let mostradorQuantProd = produto.querySelector('div output')
@@ -69,6 +73,8 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
     function comprarProduto () {
 
+        
+
         quantidadeProduto += 1    
         precoFinalProduto = precoProduto * quantidadeProduto
         mostradorQuantProd.textContent = quantidadeProduto
@@ -79,6 +85,14 @@ document.querySelectorAll('.container-produto').forEach(produto => {
         // console.log('Total: ' + totalGasto)
 
         calculandoFortuna(precoProduto, "compra")
+
+        // verificando se o produto possui apenas uma unidade disponível, como o caso do Twitter e do Cruzeiro
+        if (produto.classList.contains('unico') && quantidadeProduto == 1) {
+            // desabilita o botão e muda a cor
+            btnCompra.disabled = true   
+            btnCompra.style.backgroundColor = '#d3d3d3'
+    
+        } 
 
         // let produtoVendido = { 
         //     'quantidade': quantidadeProduto,
@@ -98,6 +112,7 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     btnVenda.addEventListener('click', venderProduto)
 
     function venderProduto () {
+        
 
         if (quantidadeProduto > 0) {
             quantidadeProduto -= 1    
@@ -110,6 +125,12 @@ document.querySelectorAll('.container-produto').forEach(produto => {
             // console.log('Total: ' + totalGasto)
 
             calculandoFortuna(precoProduto, "venda")
+
+            // caso o produto seja diferente de 1 o botão é reativado e a cor fica verde novamente
+            if (produto.classList.contains('unico') &&  quantidadeProduto != 1) {
+                btnCompra.disabled = false   
+                btnCompra.style.backgroundColor = '#1FAA6F'
+            }
 
             // let produtoVendido = { 
             //     'quantidade': quantidadeProduto,

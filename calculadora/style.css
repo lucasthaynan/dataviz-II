@@ -52,9 +52,11 @@ div.container-produto > h2 {
 
 div.container-produto > img {
     max-width:150px;
-    max-height:120px;
+    max-height:107px;
     width: auto;
-    height: auto;
+    height: 107px;
+    object-fit: cover;
+    border-radius:8px;
  
 }
 
