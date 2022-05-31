@@ -2,7 +2,7 @@
 
 // criar array
 
-// let todosProdutosVendidos = []
+let todosProdutosVendidos = []
 
 // console.log(todosProdutosVendidos)
 
@@ -37,12 +37,6 @@ function calculandoFortuna (precoProduto, tipo) {
 
 
 document.querySelectorAll('.container-produto').forEach(produto => {
-    // console.log(produto)
-    // console.log(produto.classList.contains('unico'))
-
-    
-
-    // console.log(containerA.classList.contains("teste"));
 
     // nome do produto
     let nomeProduto = produto.querySelector('h2')
@@ -51,17 +45,14 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     //  cria variavel do preço do produto 
     let precoProduto = produto.querySelector('input')
     precoProduto = parseFloat(precoProduto.value)
-    // console.log(precoProduto)    
+
     
     //  cria variavel da quantidade do produto
     let quantidadeProduto = 0
-    // console.log(quantidadeProduto)
-
+ 
     // preço total do produtos
     let precoFinalProduto = 0
-
-
-    
+   
 
     // tag de mostrar quantidade de produtos
     let mostradorQuantProd = produto.querySelector('div output')
@@ -71,9 +62,7 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
     btnCompra.addEventListener('click', comprarProduto)
 
-    function comprarProduto () {
-
-        
+    function comprarProduto () {        
 
         quantidadeProduto += 1    
         precoFinalProduto = precoProduto * quantidadeProduto
@@ -81,8 +70,6 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
         totalGasto = totalGasto + precoProduto
 
-        // console.log(precoFinalProduto)
-        // console.log('Total: ' + totalGasto)
 
         calculandoFortuna(precoProduto, "compra")
 
@@ -94,14 +81,14 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     
         } 
 
-        // let produtoVendido = { 
-        //     'quantidade': quantidadeProduto,
-        //     'produto': nomeProduto,
-        //     'Total': precoFinalProduto
-        // }
+        let produtoVendido = { 
+            'quantidade': quantidadeProduto,
+            'produto': nomeProduto,
+            'Total': precoFinalProduto
+        }
     
-        // todosProdutosVendidos.push(produtoVendido)
-        // console.log(todosProdutosVendidos)
+        todosProdutosVendidos.push(produtoVendido)
+        console.log(todosProdutosVendidos)
 
     }
 
@@ -120,9 +107,6 @@ document.querySelectorAll('.container-produto').forEach(produto => {
             mostradorQuantProd.textContent = quantidadeProduto
 
             totalGasto = totalGasto - precoProduto
-
-            // console.log(precoFinalProduto)
-            // console.log('Total: ' + totalGasto)
 
             calculandoFortuna(precoProduto, "venda")
 
@@ -143,10 +127,6 @@ document.querySelectorAll('.container-produto').forEach(produto => {
         } 
 
     }
-
-    
- 
-
 
 })
 
