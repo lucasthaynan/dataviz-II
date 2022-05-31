@@ -192,6 +192,17 @@ div.lista .item {
     gap: 20px;
 }
 
+div.gasto-total {
+    color: #354064;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+div.gasto-total span {
+    font-weight: bold;
+}
+
 @media (max-width: 1040px) {
     main { 
         display: flex;

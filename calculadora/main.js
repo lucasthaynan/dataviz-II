@@ -16,6 +16,11 @@ let fortunaElonMusk = 1021000000000
 
 let totalGasto = 0
 
+// function percentual () {
+
+// }
+
+
 
 function calculandoFortuna (precoProduto, tipo) {
     if (tipo == "compra") {
@@ -31,8 +36,23 @@ function calculandoFortuna (precoProduto, tipo) {
 
     let fortunaCalculada = formatMoney(fortunaElonMusk)
     fortuna.innerHTML = fortunaCalculada
-    
+
+        
 }
+
+function atualizarGastos () {
+    
+    let percentualGasto = (totalGasto * 100) / 1021000000000
+
+    // arredondado valor final para 5 casas decimais
+    percentualGasto = percentualGasto.toFixed(5)
+    document.querySelector('div.gasto-total .percentual').innerHTML = percentualGasto        
+
+    let valorTotalGasto = formatMoney(totalGasto)    
+    document.querySelector('div.gasto-total .valor-total').innerHTML = valorTotalGasto
+
+}
+    
 
 
 
@@ -81,6 +101,8 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     
         } 
 
+        atualizarGastos()
+
         let produtoVendido = { 
             'quantidade': quantidadeProduto,
             'produto': nomeProduto,
@@ -88,7 +110,7 @@ document.querySelectorAll('.container-produto').forEach(produto => {
         }
     
         todosProdutosVendidos.push(produtoVendido)
-        console.log(todosProdutosVendidos)
+        // console.log(todosProdutosVendidos)
 
     }
 
@@ -115,6 +137,8 @@ document.querySelectorAll('.container-produto').forEach(produto => {
                 btnCompra.disabled = false   
                 btnCompra.style.backgroundColor = '#1FAA6F'
             }
+
+            atualizarGastos()
 
             // let produtoVendido = { 
             //     'quantidade': quantidadeProduto,
