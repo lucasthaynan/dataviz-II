@@ -1,28 +1,24 @@
 
 
-// criar array
-
+// criando objeto vazio para adicionar os produtos "comprados"
 let todosProdutosVendidos = {}
 
-// console.log(todosProdutosVendidos)
-
-
+// função para formatar número no formato de moeda brasileira
 function formatMoney(number) {
     return number.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  }  
+}  
 
-
+// total da fortuna inicial
 let fortunaElonMusk = 1021000000000
 
+// total de gastos inicial
 let totalGasto = 0
 
-// function percentual () {
-
-// }
 
 
-
+// função que atualiza a variável fortunaElonMusk e atualiza a informação na página
 function calculandoFortuna (precoProduto, tipo) {
+
     if (tipo == "compra") {
         fortunaElonMusk = fortunaElonMusk - precoProduto  
              
@@ -36,7 +32,6 @@ function calculandoFortuna (precoProduto, tipo) {
 
     let fortunaCalculada = formatMoney(fortunaElonMusk)
     fortuna.innerHTML = fortunaCalculada
-
         
 }
 
@@ -52,26 +47,28 @@ function atualizarGastos () {
     let valorTotalGasto = formatMoney(totalGasto)    
     document.querySelector('div.gasto-total .valor-total').innerHTML = valorTotalGasto
 
+    // chamando função para mostrar botão de mostrar nota fiscal (pop-up)
+    mostrarBotaoNotafiscal()
+
 }
     
 
-
-
+// percorrendo cada produto da página
 document.querySelectorAll('.container-produto').forEach(produto => {
 
     // nome do produto
     let nomeProduto = produto.querySelector('h2')
     nomeProduto = nomeProduto.innerHTML
 
-    //  cria variavel do preço do produto 
+    //  cria variável do preço do produto 
     let precoProduto = produto.querySelector('input')
     precoProduto = parseFloat(precoProduto.value)
 
     
-    //  cria variavel da quantidade do produto
+    //  cria variável da quantidade do produto
     let quantidadeProduto = 0
  
-    // preço total do produtos
+    // preço total do produto
     let precoFinalProduto = 0
    
 
@@ -80,18 +77,25 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
     //  botão de comprar acionado
     let btnCompra = produto.querySelector('div button.compra')
-
+    
+    // ao clicar no botão de comprar chama a função "comprarProduto()"
     btnCompra.addEventListener('click', comprarProduto)
 
     function comprarProduto () {        
 
+        // adicionar mais um produto na quantidade
         quantidadeProduto += 1    
+
+        // calcula o preço atual dos produtos "comprados"
         precoFinalProduto = precoProduto * quantidadeProduto
+
+        // atualiza na página o quantitativo de vezes que um produto foi "comprado"
         mostradorQuantProd.textContent = quantidadeProduto
 
+        // soma na variável global "totalGasto" 
         totalGasto = totalGasto + precoProduto
 
-
+        // chamando fução de calculandoFortuna()
         calculandoFortuna(precoProduto, "compra")
 
         // verificando se o produto possui apenas uma unidade disponível, como o caso do Twitter e do Cruzeiro
@@ -102,19 +106,21 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     
         } 
 
+        // chama função de atualizarGastos() para atualizar infos na página
         atualizarGastos()
 
-
+        // adiciona um novo objeto (caso não tenha) e atualiza os registros já "comprados"
         todosProdutosVendidos[nomeProduto] = { 
             'quantidade': quantidadeProduto,
             'produto': nomeProduto,
             'total': precoFinalProduto
         }
 
+        // chama a função que lista produtos na "nota fiscal"
         listaProdutos()
     
         // todosProdutosVendidos.push(produtoVendido)
-        console.log(todosProdutosVendidos)
+        // console.log(todosProdutosVendidos)
 
     }
 
@@ -141,48 +147,98 @@ document.querySelectorAll('.container-produto').forEach(produto => {
                 btnCompra.disabled = false   
                 btnCompra.style.backgroundColor = '#1FAA6F'
             }
-
-            atualizarGastos()
-
-            // let produtoVendido = { 
-            //     'quantidade': quantidadeProduto,
-            //     'produto': nomeProduto,
-            //     'Total': precoFinalProduto
-            // }
-        
-            // todosProdutosVendidos.push(produtoVendido)
-            // console.log(todosProdutosVendidos)
+            
         } 
 
-    }
+        // adiciona um novo objeto (caso não tenha) e atualiza os registros já "comprados"
+        todosProdutosVendidos[nomeProduto] = { 
+            'quantidade': quantidadeProduto,
+            'produto': nomeProduto,
+            'total': precoFinalProduto
+        }
 
+        // chama função de atualizarGastos() para atualizar infos na página
+        atualizarGastos()
+
+        // chama a função que lista produtos na "nota fiscal"
+        listaProdutos()
+
+    }
 })
+
 
 function listaProdutos () {
     let containerProdutos = document.querySelector('.container-lista')
     containerProdutos.innerHTML = ''
     let nomesProdutos = Object.keys(todosProdutosVendidos) 
-    console.log(nomesProdutos)
+    // console.log(nomesProdutos)
 
     nomesProdutos.forEach ( produto => {
-        let item = document.createElement('div')
-        item.classList.add('item')
-        let p1 = document.createElement('p')
-        p1.innerText = todosProdutosVendidos[produto].quantidade + 'X'
 
-        let p2 = document.createElement('p')
-        p2.innerText = todosProdutosVendidos[produto].produto
+        // acrescenta um item na lista da "nota fiscal" se o produto foi comprado pelo menos uma vez, ou seja, a quantidade é maior que 0
+        if (todosProdutosVendidos[produto].quantidade > 0) {
 
-        let p3 = document.createElement('p')
-        p3.innerText = formatMoney(todosProdutosVendidos[produto].total)
+            console.log('Maior que zero: ' + produto);
 
-        item.appendChild(p1)
-        item.appendChild(p2)
-        item.appendChild(p3)
+            // criando divs e ps para listar dados no html
 
-        containerProdutos.appendChild(item)
+            let item = document.createElement('div')
+            item.classList.add('item')
+
+            let p1 = document.createElement('p')
+            p1.innerText = todosProdutosVendidos[produto].quantidade + 'X'
+
+            let p2 = document.createElement('p')
+            p2.innerText = todosProdutosVendidos[produto].produto
+
+            let p3 = document.createElement('p')
+            p3.innerText = formatMoney(todosProdutosVendidos[produto].total)
+
+            // pendurando tags de parágrafo ao div pai
+            item.appendChild(p1)
+            item.appendChild(p2)
+            item.appendChild(p3)
+
+            // pendurando div em container pai
+            containerProdutos.appendChild(item)
+        }        
+        
     })
-
-
 }
+
+
+let btnFechar = document.querySelector('button.fechar')
+
+btnFechar.addEventListener('click', e => {
+
+    // ocultando pop-up da nota fiscal
+    document.querySelector("section.nota-fiscal").style.display = "none"
+
+    document.querySelector("section.produtos").style.display = "flex"
+
+    document.querySelector("section.resultado").style.display = "block"
+
+})
+
+
+let btnVerNotaFiscal = document.querySelector('button.nota')
+
+function mostrarBotaoNotafiscal () {
+    if (totalGasto > 0 ) {
+        btnVerNotaFiscal.style.display = "flex"
+    } else {
+        btnVerNotaFiscal.style.display = "none"
+    }
+}
+
+btnVerNotaFiscal.addEventListener('click', e => {
+
+    // ocultando pop-up da nota fiscal
+    document.querySelector("section.nota-fiscal").style.display = "block"
+
+    document.querySelector("section.produtos").style.display = "none"
+
+    document.querySelector("section.resultado").style.display = "none"
+
+})
 

@@ -28,6 +28,8 @@ section.produtos {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 15px;
+
+    /* display: none; */
 }
 
 div.container-produto {
@@ -44,6 +46,11 @@ div.container-produto {
     justify-content: space-around;
     
     row-gap: 8px;
+
+    box-shadow: 5.21689px 7.30364px 5.21689px rgba(0, 0, 0, 0.03);
+    
+    font-size: 0.85rem;
+
 }
 
 div.container-produto > h2 {
@@ -119,8 +126,11 @@ div.operacao output {
     text-align: center;
 }
 
-div.container-produto {
-    font-size: 0.85rem;
+
+
+section.resultado {
+    opacity: 1;
+    /* display: none; */
 }
 
 section.resultado div.titulo {
@@ -173,7 +183,7 @@ section.resultado div.valor > p {
     color: #fff;
 }
 
-section.resultado div.lista {
+/* section.resultado div.lista {
     color: #fff;
     width: 300px;
     padding: 20px 20px;
@@ -184,12 +194,15 @@ section.resultado div.lista {
 
     position: fixed;
     top: 270px;    
-}
+} */
 
-div.lista .item {
+div.container-lista .item {
+    margin-top: 7px;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 7px;
 }
 
 div.gasto-total {
@@ -261,4 +274,90 @@ div.gasto-total span {
         justify-content: center;
     }
 
+}
+
+section.nota-fiscal {
+    display: none;
+
+    width: 370px;
+
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+     
+}
+
+section.nota-fiscal .lista {
+    background-color: #fff;
+    padding: 30px 30px;
+    border-radius: 25px;
+    box-shadow: 5.21689px 7.30364px 5.21689px rgba(0, 0, 0, 0.03);
+
+}
+
+div.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.nota {
+    top: 310px;
+    position: fixed;    
+    background-color: #1FAA6F;
+    border-radius: 100px;
+    padding: 12px 20px;
+    color: #FFFFFF;
+    font-size: 1rem;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+button.nota img {
+    width: 20px;
+}
+
+p.nome-nota {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-align: center;
+
+    color: #14133F;
+
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+div.container-lista div.item > p {
+    font-size: 1rem;
+}
+
+div.container-lista > div.item::after {
+    content: '';
+    width: 100%;   
+
+    border-top: 0.9px dashed #8B8B8B;
+    display: block;
+    margin: 0 auto;
+
+    opacity: 0.4;
+}
+
+button.fechar {
+    top: -41px;
+    left: 315px;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    position: relative;
+    background-color: #354064;
+    color: #fff;
+    font-weight: bold;
 }
