@@ -2,7 +2,7 @@
 
 // criar array
 
-let todosProdutosVendidos = []
+let todosProdutosVendidos = {}
 
 // console.log(todosProdutosVendidos)
 
@@ -40,6 +40,7 @@ function calculandoFortuna (precoProduto, tipo) {
         
 }
 
+// função que atualiza texto com informações do % e total gasto
 function atualizarGastos () {
     
     let percentualGasto = (totalGasto * 100) / 1021000000000
@@ -103,14 +104,17 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
         atualizarGastos()
 
-        let produtoVendido = { 
+
+        todosProdutosVendidos[nomeProduto] = { 
             'quantidade': quantidadeProduto,
             'produto': nomeProduto,
-            'Total': precoFinalProduto
+            'total': precoFinalProduto
         }
+
+        listaProdutos()
     
-        todosProdutosVendidos.push(produtoVendido)
-        // console.log(todosProdutosVendidos)
+        // todosProdutosVendidos.push(produtoVendido)
+        console.log(todosProdutosVendidos)
 
     }
 
@@ -153,4 +157,32 @@ document.querySelectorAll('.container-produto').forEach(produto => {
     }
 
 })
+
+function listaProdutos () {
+    let containerProdutos = document.querySelector('.container-lista')
+    containerProdutos.innerHTML = ''
+    let nomesProdutos = Object.keys(todosProdutosVendidos) 
+    console.log(nomesProdutos)
+
+    nomesProdutos.forEach ( produto => {
+        let item = document.createElement('div')
+        item.classList.add('item')
+        let p1 = document.createElement('p')
+        p1.innerText = todosProdutosVendidos[produto].quantidade + 'X'
+
+        let p2 = document.createElement('p')
+        p2.innerText = todosProdutosVendidos[produto].produto
+
+        let p3 = document.createElement('p')
+        p3.innerText = formatMoney(todosProdutosVendidos[produto].total)
+
+        item.appendChild(p1)
+        item.appendChild(p2)
+        item.appendChild(p3)
+
+        containerProdutos.appendChild(item)
+    })
+
+
+}
 
