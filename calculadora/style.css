@@ -7,9 +7,18 @@
     box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: #A8DBA8;
     font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    min-height: 100%;
 }
 
 main {
@@ -27,7 +36,7 @@ section.produtos {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 15px;    
 
     /* display: none; */
 }
@@ -200,8 +209,7 @@ div.container-lista .item {
     margin-top: 7px;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 20px;
+    flex-wrap: wrap;    
     row-gap: 7px;
 }
 
@@ -278,16 +286,30 @@ div.gasto-total span {
 
 section.nota-fiscal {
     display: none;
-
     width: 370px;
 
-
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-     
+    /* adcionando animação de abertura do pop-up */
+    animation: open 0.8s forwards;
 }
+
+
+
+@keyframes open {
+    0% { 
+        transform: scale(0);
+    }
+    50% { 
+        transform: scale(1.2);
+    }
+    70% { 
+        transform: scale(0.95);
+    }
+    100% { 
+        transform: scale(1);
+    }
+}
+
+
 
 section.nota-fiscal .lista {
     background-color: #fff;
@@ -304,7 +326,7 @@ div.btn {
 }
 
 button.nota {
-    top: 310px;
+    bottom: 100px;
     position: fixed;    
     background-color: #1FAA6F;
     border-radius: 100px;
@@ -316,7 +338,30 @@ button.nota {
     justify-content: center;
     align-items: center;
     gap: 7px;
+    
+    /* aplicando animação de pulse */
+    transform: scale(1);
+    animation: pulse 2s infinite;
 }
+
+/* criando animação de pulse */
+@keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 #1faa70b0;
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(24, 127, 52, 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(31, 133, 85, 0);
+    }
+  }
+
 
 button.nota img {
     width: 20px;
@@ -361,3 +406,21 @@ button.fechar {
     color: #fff;
     font-weight: bold;
 }
+
+div.item p:nth-child(1) {
+    min-width: 10%;
+}
+
+div.item p:nth-child(2) {
+    max-width: 40%;    
+}
+
+div.item p:nth-child(3) {
+    min-width: 50%;
+    text-align: right;
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+
+

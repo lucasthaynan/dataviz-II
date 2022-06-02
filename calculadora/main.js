@@ -186,7 +186,7 @@ function listaProdutos () {
             item.classList.add('item')
 
             let p1 = document.createElement('p')
-            p1.innerText = todosProdutosVendidos[produto].quantidade + 'X'
+            p1.innerText = todosProdutosVendidos[produto].quantidade + 'x'
 
             let p2 = document.createElement('p')
             p2.innerText = todosProdutosVendidos[produto].produto
@@ -212,12 +212,16 @@ let btnFechar = document.querySelector('button.fechar')
 btnFechar.addEventListener('click', e => {
 
     // ocultando pop-up da nota fiscal
+
+    
+
     document.querySelector("section.nota-fiscal").style.display = "none"
 
     document.querySelector("section.produtos").style.display = "flex"
 
     document.querySelector("section.resultado").style.display = "block"
 
+    
 })
 
 
@@ -229,9 +233,15 @@ function mostrarBotaoNotafiscal () {
     } else {
         btnVerNotaFiscal.style.display = "none"
     }
+
 }
 
 btnVerNotaFiscal.addEventListener('click', e => {
+
+    // deixar o scroll no topo da página quando o botão do pop-up for clicado
+    document.documentElement.scrollTop = 0
+
+    
 
     // ocultando pop-up da nota fiscal
     document.querySelector("section.nota-fiscal").style.display = "block"
@@ -240,5 +250,6 @@ btnVerNotaFiscal.addEventListener('click', e => {
 
     document.querySelector("section.resultado").style.display = "none"
 
+    
 })
 
