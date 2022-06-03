@@ -253,3 +253,24 @@ btnVerNotaFiscal.addEventListener('click', e => {
     
 })
 
+
+window.addEventListener('resize', ajustandoBotaoNota);
+
+ajustandoBotaoNota()
+
+// criando função que ajusta o texto dentro do botão a depender da dimensão da tela
+function ajustandoBotaoNota() {
+
+    let botaoNota = document.querySelector("button.nota")
+
+    if (window.innerWidth < 1040) {        
+
+        botaoNota.innerHTML = '<img src="imagens/nota-fiscal.png" alt="">'
+
+    } else {
+
+        botaoNota.innerHTML = `<img src="imagens/nota-fiscal.png" alt="">
+        Nota fiscal`
+
+    }
+}
