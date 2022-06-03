@@ -118,9 +118,6 @@ document.querySelectorAll('.container-produto').forEach(produto => {
 
         // chama a função que lista produtos na "nota fiscal"
         listaProdutos()
-    
-        // todosProdutosVendidos.push(produtoVendido)
-        // console.log(todosProdutosVendidos)
 
     }
 
@@ -211,9 +208,7 @@ let btnFechar = document.querySelector('button.fechar')
 
 btnFechar.addEventListener('click', e => {
 
-    // ocultando pop-up da nota fiscal
-
-    
+    // ocultando pop-up da nota fiscal    
 
     document.querySelector("section.nota-fiscal").style.display = "none"
 
