@@ -24,7 +24,7 @@ body {
 main {
     padding: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
     column-gap: 50px;
 }
