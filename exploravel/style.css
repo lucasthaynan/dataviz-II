@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+body {
+    font-family: 'Inter';
+    font-size: 1rem;
+}
+
+svg path {
+    width: 1000px;
+    fill: rgb(222, 222, 222);
+
+    /* adicionar borda no SVG */
+    stroke: #fff;
+    stroke-width: 2px;    
+    stroke-linejoin: round;
+    /* stroke-dasharray: 2,2; */
+
+    transition: all 0.1s ease-out;
+}
+
+svg path:hover {
+    fill: #F9BA48;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+}
+
+svg path.ativo {
+    fill: #F9BA48;
+    cursor: pointer;
+    transition: all 0.1s ease-out;
+}
+
+svg path text {
+    font-size: 2rem;
+    fill: black;
+    z-index: 100;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+/* .mapa-br svg {
+    width: 300px;
+    height: 300px;
+} */
+
+.titulo h1 {
+    text-align: center;    
+}
+
+p.nome-local {
+    text-align: center;
+    
+}
+
+
+canvas.chart {
+    width: 700px;
+    height: 3000px;
+}
+
+section .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
