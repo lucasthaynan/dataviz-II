@@ -2,6 +2,15 @@
 // seleciona todas as tags 'path', que representa cada estado no mapa SVG
 let estadosBr = document.querySelectorAll('.mapa-br > path')
 
+// cherando variáveis com os dados do Brasil
+admissoesBr = [1507496,1612525,1460083,658270,758648,956142,1166998,1312961,1462000,1630076,1613644,1297874,1622976,1766561,1658049,1395180,1560071,1610611,1666855,1816305,1780138]
+
+desligamentosBr = [1389604,1386756,1736281,1621918,1132530,986702,1029950,1070349,1142803,1237840,1215572,1409853,1361712,1368856,1482368,1279116,1284355,1308278,1364364,1448140,1466162],
+
+// criando gráfico do Brasil
+graficoChartJs(admissoesBr, desligamentosBr)
+
+
 // percorrendo a lista de estados 
 for (let estado of estadosBr) {
     // console.log(estado.id)
@@ -40,13 +49,14 @@ for (let estado of estadosBr) {
       console.log(estado.getAttribute("title"))
   })
 }
-// graficoChartJs([1,2], [1,2])
 
+// funcao para carregar dados do Json
 function carregandoDadosJson (sigla) {
   fetch('caged_estados.json')
   .then(response => response.json())
   .then(data => {
 
+    // script para ler o json no formato atual, mais detalhes em: https://stackoverflow.com/questions/72654010/how-to-properly-adjust-json-file-format-in-javascript/72654083#72654083
       const format = (arr) => {
         const result = {};
         arr.forEach((val) => {
@@ -70,7 +80,6 @@ function carregandoDadosJson (sigla) {
         return result;
       };
       let res = format(data);
-
       
 
 
@@ -86,6 +95,7 @@ function carregandoDadosJson (sigla) {
   } 
 )
 }
+
 
 function mudandoNomeLocal (nomeEstado) {
   let nome = document.querySelector('p.nome-local')

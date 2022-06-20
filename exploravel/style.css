@@ -12,6 +12,17 @@ body {
     font-size: 1rem;
 }
 
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
 svg path {
     width: 1000px;
     fill: rgb(222, 222, 222);
@@ -62,7 +73,7 @@ section {
 
 p.nome-local {
     text-align: center;
-    
+    font-size: 1.5em;    
 }
 
 
@@ -72,7 +83,42 @@ canvas.chart {
 }
 
 section .infos {
+    width: 370px;
+    height: 590px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+section .infos .dados {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+a {
+    color: rgb(118, 118, 118);
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+p.fonte {
+    font-size: 0.8rem;
+    color: rgb(118, 118, 118);
+}
+
+p.detalhes {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+div.titulo {
+    background-color:#F9BA48;
+    padding: 5px 40px;
 }
