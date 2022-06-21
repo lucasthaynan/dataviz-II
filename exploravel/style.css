@@ -122,3 +122,15 @@ div.titulo {
     background-color:#F9BA48;
     padding: 5px 40px;
 }
+
+div.container {
+    position: relative;
+}
+
+p.tooltip {
+    color: rgb(112, 112, 112);
+    font-size: 0.9rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}

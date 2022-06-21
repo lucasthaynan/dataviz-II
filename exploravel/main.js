@@ -17,9 +17,16 @@ for (let estado of estadosBr) {
     let siglaEstado = estado.id
 
     // NÃO DEU CERTO - tentativa de criar um rótulo do mapa com a sigla do estado
-    let rotuloEstado = document.createElement('text')
-    rotuloEstado.textContent = siglaEstado
-    estado.append(rotuloEstado)
+    let rotuloEstado = document.createElement('p')
+    let siglaUf = siglaEstado.split('-')
+    rotuloEstado.textContent = siglaUf[1]
+    let bBox = estado.getBBox()
+    rotuloEstado.style.top = (bBox.y + bBox.height / 2) + 'px'
+    rotuloEstado.style.left = (bBox.x + bBox.width /2) + 'px'
+    rotuloEstado.classList.add('tooltip')
+
+    document.querySelector('div.container').appendChild(rotuloEstado)
+
 
     // quando algum estado é clicado aciona a função abaixo
     estado.addEventListener('click', e => {  
