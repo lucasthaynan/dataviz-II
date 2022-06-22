@@ -133,4 +133,7 @@ p.tooltip {
     position: absolute;
     transform: translate(-50%, -50%);
     user-select: none;
+
+    /* ignorar texto, o que permite selecionar/clicar em estados pequenos */
+    pointer-events: none;
 }
