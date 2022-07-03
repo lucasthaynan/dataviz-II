@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+* {  
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box; /* Limitar tamanho de todas as caixas contando padding e margin */
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+
+main {
+    background: linear-gradient(180deg, #20003C 0%, #37097A 22.92%, #3A2CAA 53.12%, #3A79C9 71.35%, #5191E2 96.35%);
+    z-index: 1;
+}
+
+main > section {
+    /* border-top: 1px solid red; */
+    /* height: 100vh; */
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;    
+    
+}
+
+section > div.conteudo {
+    max-width: 1000px;
+    display: flex;
+   
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 50px;
+    text-transform: uppercase;
+    font-size: 6rem;
+    text-align: center;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 500;
+    color: #8255D5;
+}
+
+p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+div.textos {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 180px;  
+    padding-left: 30px;
+    padding-right: 30px;  
+    
+}
+
+div.textos > p:nth-child(1) {
+    text-align: right;
+    width: 50%;
+    font-size: 1rem;
+    
+}
+
+div.textos > p:nth-child(3) {
+    width: 50%;
+    font-size: 1rem;
+}
+
+.linha-curva {
+    position: relative;
+    width: 98.5vw;
+    top: 80px;
+}
+
+.aviao {
+    width: 100px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 100;
+
+    /* transition: 0.2s; */
+}
+
+/* div.textos p:nth-child(3) {
+    text-align: right;
+} */
+
+section.intro .conteudo {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+
+.camada h2 {
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 500;
+    color: #8255D5;
+}
+
+.camada h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    padding-bottom: 20px;
+}
+
+.camada p {
+    margin-top: -200px;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1rem;
+    margin-left: 650px;
+}
+
+
+
+
+img.terra {
+    max-width: 98vw;
+    margin-top: auto;
+}
+
+
+div.mapa-alagoas {
+    width: 750px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+div.mapa-alagoas path {
+    fill: #6051D4;
+    stroke: #fff;
+    stroke-width: 1px;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+    transition: all 0.1s ease-out;
+}
+
+div.mapa-alagoas path.desativado {
+    fill: rgb(98 93 245 / 29%);
+    stroke: rgb(98 93 245 / 29%);
+    pointer-events: none;
+}
+
+
+div.mapa-alagoas path:hover {
+    fill: #29075c;
+    cursor: pointer;
+}
+
+div.mapa-alagoas path.desativado[disabled]:hover {    
+    cursor: pointer;
+}
+
+div.mapa-alagoas #mapa-troposfera path {
+    fill: #517fd4;
+    stroke: #fff;
+}
+
+div.mapa-alagoas #mapa-troposfera path.desativado {
+    fill: rgb(93 169 245 / 29%);
+    stroke: rgb(93 169 245 / 29%);
+    cursor: unset;
+}
+
+div.mapa-alagoas #mapa-exosfera path.desativado:hover {
+    fill: rgb(98 93 245 / 29%);
+    
+}
+
+div.mapa-alagoas #mapa-exosfera path:hover {
+    fill: #361986;      
+}
+
+div.mapa-alagoas #mapa-mesosfera path:hover {
+    fill: #361986;      
+}
+
+div.mapa-alagoas #mapa-troposfera path:hover {
+    fill: #1c5baf;      
+}
+
+div.mapa-alagoas path.desativado:hover {
+    /* fill: #29075c; */
+    cursor: unset;
+}
+
+div.pop-up {
+    /* centralizar container branco na tela */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 630px;
+    height: 470px;         
+
+    box-shadow: 8px 10px 5px rgba(0, 0, 0, 0.07);
+    border-radius: 30px;    
+
+    z-index: 300;
+
+    color: #FFFFFF;
+
+    padding: 30px 30px;
+
+    background-color: #391b93ee;
+    border: 2px solid #FFFFFF;
+
+    transition: all 0.5s ease-out;
+    
+    /* ocultar */
+    display: none;
+}
+
+div.container-pop-up {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(261deg 50% 14% / 46%);
+    z-index: 250;
+
+    /* ocultar */
+    display: none;
+}
+
+div.btn-pop-up {
+    height: 5px;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+p#fechar-pop-up {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    text-align: center;
+    right: -48px;
+    top: -48px;
+    background-color: #1e0b56;
+    border: 2px solid #fff;
+    border-radius: 99px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 25px;
+    cursor: pointer;
+    
+}
+p.nome-municipio {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-bottom: 5px;
+}
+
+p.camada-municipio {
+    margin: 0 auto;    
+    width: 130px;
+    text-align: center;
+    background-color: #1e0b56;
+    padding: 5px 20px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+}
+
+p.texto-municipio {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0 45px;
+}
+
+
+section.texto-reportagem {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 200px;
+    justify-content: flex-start;  
+    height: 100%; 
+    margin: 50px auto;
+}
+
+section.texto-reportagem > p {
+    padding-bottom: 20px;
+    color: #ffff;
+}
+
+img.grafico-sexo {
+    max-width: 750px;
+}
+
+img.foto {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+p.legenda {
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-align: left;
+    margin-bottom: 15px;
+    /* border-bottom: 1px solid blue; */
+}
+
+
+section.texto-reportagem > h2 {
+    padding-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+    font-style: normal;
+    font-weight: 500;
+    color: hsl(206deg 100% 73%);
+}
+
+a {
+    color: rgb(179, 222, 255);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+section#expediente {
+    background-color: rgb(143,136,123);
+    max-width: 100vw;
+    margin: 0;
+    padding: 100px auto;
+}
+
+section#expediente > div {
+    margin: 30px auto 120px auto;
+}
+
+section#fim-reportagem {
+    margin: 50px auto 0 auto;
+}
+
+section#expediente .infos-expediente {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 300px;
+}
+
+
+section#expediente .infos-expediente > div {
+    width: 250px;
+}
+
+section#expediente .infos-expediente h3 {
+    font-size: 0.9rem;
+    color: #3f3a30;
+    text-align: center;
+}
+
+section#expediente > p.data {
+    margin-top: 30px;
+    font-size: 1rem;
+}
+
+section#expediente p {
+
+    text-align: center;
+}
+
+section#expediente > p.texto-expediente {
+    margin-top: 60px;
+    font-size: 2rem;
+    color: #3f3a30;
+    text-align: center;
+}
+
+img.logo {
+    width: 170px;
+}
+
+/*  */
+
+
+/* section.pop-up > div {
+    display: block;
+    position: fixed;
+    width: 900px;
+    height: 500px;
+    margin: auto;
+    background-color: #fff;
+    color: black;
+    z-index: 300;
+} */
+
+
+
+/* EFEITO DE LUZES NO FUNDO */ 
+
+.lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    margin: auto;
+    width: 90vw;
+    z-index: 0;
+    pointer-events: none;
+}
+    
+.line {
+    position: fixed;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    /* background: rgba(255, 255, 255, 0.1); */
+    overflow: hidden;
+}
+.line::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 15vh;
+    width: 100%;
+    top: -50%;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff75 75%, #ffffff8c 100%);
+    -webkit-animation: drop 7s 0s infinite;
+            animation: drop 7s 0s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+            animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+.line:nth-child(1) {
+    margin-left: -25%;
+}
+.line:nth-child(1)::after {
+    -webkit-animation-delay: 2s;
+     animation-delay: 2s;
+}
+.line:nth-child(3) {
+    margin-left: 25%;
+}
+.line:nth-child(3)::after {
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+}
+
+@-webkit-keyframes drop {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+@keyframes drop {
+    0% {
+        top: -50%;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+
+@media (max-width: 1000px) {
+
+    .aviao {
+        left: 10%;
+        
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    div.textos {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    div.textos > p:nth-child(1) {
+        text-align: left;
+    }
+
+    section.intro .conteudo {
+        padding-bottom: 50px;
+    }
+
+    .linha-curva {
+        width: 98vw;
+    }
+
+    .camada p {
+        margin-top: -50px;
+        max-width: 570px;
+        width: auto;
+        margin-left: 0;
+    }
+
+    section.texto-reportagem {
+        padding: 0 120px;
+    }
+
+    section#expediente .infos-expediente {
+        row-gap: 60px;
+    }
+
+    .camada h2 {
+        margin-top: 50px;
+        font-size: 2rem;
+    }
+
+}
+
+
+
+@media (max-width: 370px) {
+
+    .aviao {
+        left: 7%;
+        width: 30px;
+        opacity: 0.2;
+        display: none;
+    }
+
+    h1 {
+        font-size: 4rem;
+        margin-bottom: 60px;
+        max-width: 80vw;
+    }
+
+    div.textos {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+
+        padding: 0 0;
+    }
+
+    div.textos > p:nth-child(1) {
+        text-align: left;
+        width: 70vw;
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+
+    div.textos > p:nth-child(3) {
+        width: 70vw;
+        font-size: 1rem;
+        line-height: 1.2rem;
+
+    }
+
+    section.intro .conteudo {
+        padding-bottom: 50px;
+    }
+
+    .linha-curva {
+        width: 94vw;
+    }
+
+    div.mapa-alagoas {
+        width: 90vw;
+    }
+
+    .camada h2 {
+        margin-top: 60px;
+        font-size: 2rem;
+    }
+
+    .camada h3 {
+        font-size: 1rem;
+        text-align: center;
+        padding: 5px 20px;
+    }
+
+    section.texto-reportagem > h2 {
+        margin-top: 50px;
+        font-size: 1.8rem;
+        text-align: left;
+    }
+
+    img.grafico-sexo {
+        width: 90vw;
+    }
+
+    img.foto {
+        width: 80vw;
+        margin: 0 0;
+        padding-bottom: 10px;
+    }
+
+    .camada p {
+        margin-top: -25px;
+        max-width: 570px;
+        
+        margin-left: 0;
+
+        font-size: 1rem;
+        line-height: 1.2rem;
+        text-align: left;
+        width: 70vw;
+    }
+
+    section.texto-reportagem {
+        padding: 0 120px;
+    }
+
+    section#expediente .infos-expediente {
+        row-gap: 60px;
+    }
+
+
+    img.terra {
+        width: 94vw;
+    }
+
+
+    section.texto-reportagem > p {
+        font-size: 1rem;
+        line-height: 1.2rem;
+        text-align: left;
+        width: 70vw;
+    }
+
+    section#expediente .infos-expediente > div {
+        width: 130px;
+    }
+
+}
+
+
+@media (max-width: 785px) {
+    div.mapa-alagoas {
+        width: 90vw;
+    }
+
+    .camada p {
+        width: 80vw;
+    }
+
+    img.foto {
+        width: 80vw;
+    }
+
+    img.grafico-sexo {
+        width: 90vw;
+    }
+
+    .aviao {
+        left: 10%;
+        width: 30px;
+        opacity: 0.2;
+        display: none;
+    }
+
+    div.textos > p:nth-child(1) {
+        width: 80vw;
+    }
+
+    div.textos > p:nth-child(3) {
+        width: 80vw;
+    }
+
+    section.texto-reportagem > p {
+        width: 80vw;
+    }
+
+    div.pop-up {
+        width: 80vw;
+        height: 480px;
+    }
+
+    img.foto {
+        margin: 0 0;
+    }
+
+    p.texto-municipio {
+        padding: 0 0;
+        font-size: 0.9rem;
+    }
+
+    p.nome-municipio {
+        font-size: 1.2rem;
+    }
+
+    section.texto-reportagem > h2 {
+        font-size: 2rem;
+    }
+
+    .linha-curva {
+        width: 94vw;
+    }
+
+    .camada h3 {
+        text-align: center;
+        padding: 0 20px;
+    }
+}
