@@ -1,12 +1,6 @@
 
-// destacar municípios no mapa
 
-// criar tooltip para os municípios
-
-// criar pop-up ao clicar em um municipio
-
-
-
+// função para converter formato do número do json
 function converteNumero (numero) {
     numeroConvertido = parseFloat(numero.replace('.','').replace(' ',''))
     return numeroConvertido
@@ -14,9 +8,10 @@ function converteNumero (numero) {
 
 
 
-// carregando os dados json dos municipios para cada um dos mapas
+// carregando os dados json dos municípios para cada um dos mapas
 function carregandoDadosMapas () {
-    fetch('dados_meis.json')
+    // chamando json com os dados dos municípios
+    fetch('dados_meis.json') 
     .then(response => response.json())
     .then(data => {
 
@@ -27,6 +22,7 @@ function carregandoDadosMapas () {
             nomeMunicipio = municipio['Município']
             categoriaMunicipio = municipio['categoria']
 
+            // chamando função para gerar o mapa
             gerandoMapa('exosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('mesosfera', nomeMunicipio, categoriaMunicipio)
             gerandoMapa('troposfera', nomeMunicipio, categoriaMunicipio)
@@ -37,20 +33,24 @@ function carregandoDadosMapas () {
 
 }
 
+// chamando função para carregar os dados de todos os mapas
 carregandoDadosMapas()
 
 
-
+// função para exibir o pop-up ao clicar em um determinado município
 function ativandoPopUp (camada) {
 
     let mapaAlagoas = document.querySelectorAll('#mapa-'+ camada + ' > path')
     
+    // para cada município de um mapa específico (camada) fazer tal função...
     mapaAlagoas.forEach(municipio => {
         municipio.addEventListener('click', e => {
+            // quando um município é clicado, chamar função de aparecer o pop-up
             aparecerPopUp()
     
             let nomeDoMunicipioClicado = municipio.querySelector('title').innerHTML
     
+            // chamando função para pegar dados do município clicado
             pegandoDadosMunicipio(nomeDoMunicipioClicado, camada)
            
             
@@ -58,13 +58,14 @@ function ativandoPopUp (camada) {
     })
 }
 
+// chamando função para cada mapa
 ativandoPopUp('exosfera')
 ativandoPopUp('mesosfera')
 ativandoPopUp('troposfera')
         
         
 
-
+// função que vai pegar os dados do município que for clicado no mapa
 function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
     fetch('dados_meis.json')
     .then(response => response.json())
@@ -75,6 +76,7 @@ function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
 
             if (municipio['Município'] == nomeDoMunicipio) {
 
+                // array com os dados de registros de MEIs por ano em cada município
                 let arrayMunicipio = [
                     converteNumero(municipio['2018']), 
                     converteNumero(municipio['2019']), 
@@ -82,24 +84,20 @@ function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
                     converteNumero(municipio['2021']), 
                 ]
 
-                let textoMunicipioPopUp = 'Entre 2018 e 2021, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ' para ' + municipio['2021'] + ' MEIs registrados no final de 2021.' 
+                // variável com o texto a ser exibido no pop-up
+                let textoMunicipioPopUp = 'Nos últimos quatro anos, o município teve ' + municipio['2018/2021'] + ' de crescimento, saindo de ' + municipio['2018'] + ', em 2018, para ' + municipio['2021'] + ' MEIs registrados no final de 2021.' 
 
-                console.log(arrayMunicipio)
-                console.log(textoMunicipioPopUp)
-
+                // alterando o html do pop-up
                 document.querySelector('.texto-municipio').innerHTML = textoMunicipioPopUp
 
                 document.querySelector('.nome-municipio').innerHTML = nomeDoMunicipio
 
                 document.querySelector('.camada-municipio').innerHTML = camada
 
+                // chamando a função de gerar gráfico e passando os dados do municipio clicado
                 graficoChartJs(nomeDoMunicipio, arrayMunicipio)
-
-                
-        
-
+ 
             }
-
 
         }        
 
@@ -108,14 +106,6 @@ function pegandoDadosMunicipio (nomeDoMunicipio, camada) {
 }
 
 
-
-function gerandoPopUp (camada, nomeMunicipio, categoriaMunicipio, textoMunicipioPopUp) {
-    console.log(camada)
-    console.log(nomeMunicipio)
-    console.log(categoriaMunicipio)
-    console.log(textoMunicipioPopUp)
-    
-}
 
 
 // variável do nível da camada/categoria: 'alta', 'regular' ou 'baixa'
@@ -140,7 +130,7 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
     for (let municipio of mapaAl) {
         
         let conteudoMuninicipio = municipio.querySelector('title')
-        // let idMunicipio = municipio.id
+
 
         let nomeMunMapa = conteudoMuninicipio.innerHTML
 
@@ -166,20 +156,23 @@ function gerandoMapa (camada, nomeMunicipio, categoriaMunicipio) {
 
 }
 
+// ativando botão de fechar pop-up
 let botaoFecharPopUp = document.querySelector('#fechar-pop-up')
 botaoFecharPopUp.addEventListener('click', sumirPopUp)
 
+// ativando botão de fechar pop-up
 let containterFundoPopUp = document.querySelector('.container-pop-up')
 containterFundoPopUp.addEventListener('click', sumirPopUp)
 
 
-
+// função de fazer o pop-up surgir na tela
 function aparecerPopUp () {
     document.querySelector('div.pop-up').style.display = 'block'
     document.querySelector('.container-pop-up').style.display = 'block'
     aviao.style.display = 'none'
 }
 
+// função de fazer o pop-up fechar
 function sumirPopUp () {
     document.querySelector('div.pop-up').style.display = 'none'
     document.querySelector('.container-pop-up').style.display = 'none'
@@ -191,12 +184,9 @@ function sumirPopUp () {
 
 
 let aviao = document.querySelector('.aviao');
-// console.log(aviao)
 
+// função para fazer o avião ficar transparente em um determinando ponto da página, logo quando aparecer o texto 'Novos voos'
 function escutaRolagem () {
-    // console.log('rolando a página')
-
-    // console.log(aviao.scrollTp)
 
     let limite = window.pageYOffset + reportagem.getBoundingClientRect().y
 
@@ -210,44 +200,13 @@ function escutaRolagem () {
         console.log('mostra')
         aviao.style.opacity = 1
     }
-
-    // console.log(limite)
-// 
-    // console.log(reportagem.getBoundingClientRect().y)
-
-    // console.log(window.pageYOffset)
-
-    // let sessoesPagina = document.querySelectorAll('section')
-    
-    // for (let secao of sessoesPagina) {
-
-    //     console.log(secao)
-
-    //     // console.log(secao.classList)
-
-    // //     // Para cada um deles, pegar a posição atual
-    // //     let posicao = secao.getBoundingClientRect();
-
-
-    // //     // Verificar se o gatilho está acima do topo da página
-    // //     if(posicao.top >= 1.500){
-            
-    // //         // se sim, adiciona a classe que exibe o gráfico
-    // //         // console.log('opa')
-    // //         // console.log(secao.id)
-    // //         // passo.classList.add('passo-ativo');
-    // //     }else{
-
-    // //         // console.log('deu erro')
-    // //     }
-    // }
-
    
 }
 
 window.addEventListener('scroll', escutaRolagem);
 
 
+// função que identifica o sentido do scroll e muda a posição do avião
 function detectandoRolagem(){
     var ultimaRolagem = 0;
   
@@ -277,9 +236,10 @@ detectandoRolagem();
 meisRegistrados = [56, 67, 87, 119]
 
 
-// criando gráfico do Brasil
+// criando gráfico inicial fake
 graficoChartJs('Maceió', meisRegistrados)
 
+// função para resetar gráfico (necessário no Chart.js)
 function recriandoGrafico () {
     // apagando e recriando o elemento 'canvas' para resetar os dados do gráfico
     let chartElement = document.getElementById("chart");    
@@ -295,7 +255,7 @@ function recriandoGrafico () {
     document.querySelector(".grafico").appendChild(canvaElement);  
 }
 
-  
+// função para criar gráfico com o Chart.js
 function graficoChartJs(nomeMunicipio, meisRegistrados) {
 
     // chamando a função de apagar e recriar elemento 'canvas'
